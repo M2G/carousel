@@ -1,0 +1,66 @@
+// ==========================================================================
+// BUTTONS
+// ==========================================================================
+
+.c-btn {
+  @include bp(small) {
+    padding-top: .25em;
+    padding-right: .35em;
+    padding-bottom: .25em;
+    padding-left: .35em;
+  }
+
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.5;
+
+  display: inline-flex;
+
+  margin: 0;
+  padding-top: .5em;
+  padding-right: .5em;
+  padding-bottom: .5em;
+  padding-left: .5em;
+
+  cursor: pointer;
+  user-select: none;
+  transition: $_transition-default;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-transform: uppercase;
+
+  color: $_color-white;
+  border: 0;
+  border-radius: 0;
+  background-color: $_color-brand;
+  box-shadow: 0;
+
+  touch-action: manipulation;
+
+  &:hover,
+  &:focus {
+    color: $_color-white;
+    background-color: darken($_color-brand, 6%);
+  }
+
+  &:focus {
+    background-color: darken($_color-brand, 10%);
+  }
+
+  [class*='icon'] {
+    margin-right: .25em;
+  }
+
+  & + & {
+    margin-left: .5em;
+  }
+}
+
+[class*='c-btn'] {
+  @extend .c-btn;
+}
+
+button {
+  cursor: pointer;
+}

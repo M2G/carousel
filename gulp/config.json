@@ -1,0 +1,17 @@
+{
+  "root": {
+    "src": "./public/src",
+    "dest": "./public/build"
+  },
+  "tasks": {
+    "css": {
+      "src": "css",
+      "dest": "css",
+      "extensions": ["sass", "scss", "css"],
+      "main": "style.css",
+      "autoprefixer": {
+        "browsers": ["> 5%", "last 2 versions", "ie 9"]
+      }
+    }
+  }
+}
