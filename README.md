@@ -1,11 +1,1 @@
-# Web application example in vanilla javascipt
-
-This is an attempt to build a very simple, but working application in plain javascipt. JS community has an incredible pace, and new frameworks pop out every other day – but more and more people become more and more far from understanding basic principles of JS applications, which are not rocket science at all. It is ease to come across a newbie who is trying to figure out what the hell webpack is, and is really need all this isomorphic stuff with relay server around sample react application.
-
-So, I've tried to create very-very simple application with detailed explanation of every step. It is not a framework, but just an application which can be written to fetch some data by search query typed in input and to display it. This is quite a common task (especially in the interviews) – and very often people asked how they would implement this simple task start to depend on big projects just to get 1% of their functionality, write a lot of boilerplate and end up with a spaceship to visit next village. I personally think that the problem is that we dive into frameworks, and never discuss actual implementation principles (not the intrinsic details, though). It is considered, that "true way" can be introduced only by cool developers with a lot of subscribers, but actually what we need – understanding how it works, and how we can apply it for our tasks. So, if you need to write something custom, and it hardly fits into existing solution, don't be shy to refuse this idea just because you are not cool enough – sometimes requirements are really special.
-
-So, if you want to take a look, just read the `src` folder, starting with `index.js` and then `main.js`.
-
-## Reasoning
-
-Why on earth creating another web application, especially in plain javascript? And when the reference application [exists](https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs) (which is quite obsolete to the moment – because modern applications without fetching data are not the most common case). I've written a [blog post](https://bloomca-me.github.io/2016/10/15/writing-web-application-in-plain-js.html) about it, but the general idea is to provide explanation how the basic application can be structured. This structure is not unique or special, and many frameworks have it in some way or another.
+# Carousel
