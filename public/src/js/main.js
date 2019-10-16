@@ -1,3 +1,9 @@
-import dossier from './dossier';
+import Carousel from './carousel';
 
-dossier();
+const CONSTANTS = {
+  attrName: 'data-app'
+};
+
+const elem = document.querySelector(`[${CONSTANTS.attrName}]`);
+
+if (elem) Carousel.init(elem, []);

@@ -1,283 +1,59 @@
-/*! JSMVC 0.0.0 built on: Sun Dec 30 2018 21:45:05 9a0a1cd955585020a449 */
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
-/******/ })
-/************************************************************************/
-/******/ ({
-
-/***/ "./public/src/js/dossier.js":
-/*!**********************************!*\
-  !*** ./public/src/js/dossier.js ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var CONSTANTS = {
-  attrName: 'data-app'
-};
-var visibleClass = 'is-hidden';
-var previous = 'prev';
-var next = 'next';
-
-var Carousel =
-/*#__PURE__*/
-function () {
-  function Carousel(elem) {
-    var _this = this;
-
-    _classCallCheck(this, Carousel);
-
-    this.elem = elem;
-    this.carousel = this.elem.querySelector('[data-dossier-carousel]');
-    this.intro = this.elem.querySelector('[data-dossier-intro]');
-    this.nav = this.elem.querySelector('[data-dossier-navigation]');
-    this.carousel.dataset.currentslide = 0;
-    this.carousel.dataset.slidecount = this.carousel.querySelectorAll('.c-dossier__carousel__item').length;
-    this.intro.addEventListener('click', function (event) {
-      event.preventDefault();
-
-      if (event.target.matches('.c-btn')) {
-        _this.hideIntro();
-
-        _this.changeSlide(+_this.carousel.dataset.currentslide);
-
-        _this.showCarousel();
-      }
-    });
-    this.nav.addEventListener('click', function (event) {
-      if (event.target.matches('[data-dossier-navigation-item]')) {
-        _this.handleDossierNavClick(event);
-      }
-    });
-    this.carousel.addEventListener('click', function (event) {
-      if (event.target.matches('[data-dossier-navigation-item]')) {
-        _this.handleDossierNavClick(event);
-      }
-    });
-    this.carousel.addEventListener('click', function (event) {
-      event.preventDefault();
-
-      if (event.target.matches('[data-dossier-carousel-nav]')) {
-        var direction = event.target.dataset.dossierCarouselNav;
-
-        if (direction === previous && +_this.carousel.dataset.currentslide > 0) {
-          _this.changeSlide(+_this.carousel.dataset.currentslide - 1);
-        } else if (direction === next && +_this.carousel.dataset.currentslide !== +_this.carousel.dataset.slidecount - 1) {
-          _this.changeSlide(+_this.carousel.dataset.currentslide + 1);
-        } else if (direction === previous && +_this.carousel.dataset.currentslide === 0) {
-          _this.hideCarousel();
-
-          _this.showIntro();
-        }
-      }
-    });
-  }
-
-  _createClass(Carousel, [{
-    key: "handleDossierNavClick",
-    value: function handleDossierNavClick(event) {
-      event.preventDefault();
-      var goTo = event.target.dataset.dossierNavigationItem;
-      console.log(goTo);
-
-      if (goTo === 'intro') {
-        this.showIntro();
-        this.hideCarousel();
-        this.changeSlide(0);
-      } else if (+goTo) {
-        this.hideIntro();
-        this.showCarousel();
-        this.changeSlide(+goTo - 1);
-      }
-    }
-  }, {
-    key: "changeSlide",
-    value: function changeSlide(slideNumber) {
-      var translate = slideNumber * 100;
-      this.carousel.querySelector('.c-dossier__carousel__items').style.transform = "translateX(-".concat(translate, "%)");
-      this.carousel.dataset.currentslide = +slideNumber;
-      this.removeActiveLinks();
-      this.nav.querySelector(".c-dossier__navigation__item:nth-child(".concat(slideNumber + 2, ")")).classList.add('active');
-      this.carousel.querySelector(".c-dossier__carousel__nav__item:nth-child(".concat(slideNumber + 1, ")")).classList.add('active');
-
-      if (slideNumber === +this.carousel.dataset.slidecount - 1) {
-        this.enableButtons();
-        this.disableButton(this.carousel.querySelector('[data-dossier-carousel-nav="next"]'));
-      } else {
-        this.enableButtons();
-      }
-    }
-  }, {
-    key: "disableButton",
-    value: function disableButton(button) {
-      button.setAttribute('disabled', '');
-    }
-  }, {
-    key: "enableButtons",
-    value: function enableButtons() {
-      if (this.carousel.querySelector('[data-dossier-carousel-nav][disabled]')) {
-        this.carousel.querySelector('[data-dossier-carousel-nav][disabled]').removeAttribute('disabled');
-      }
-    }
-  }, {
-    key: "removeActiveLinks",
-    value: function removeActiveLinks() {
-      if (this.nav.querySelector('.c-dossier__navigation__item.active') && this.carousel.querySelector('.c-dossier__carousel__nav__item.active')) {
-        this.nav.querySelector('.c-dossier__navigation__item.active').classList.remove('active');
-        this.carousel.querySelector('.c-dossier__carousel__nav__item.active').classList.remove('active');
-      }
-    }
-  }, {
-    key: "showIntro",
-    value: function showIntro() {
-      this.intro.classList.remove(visibleClass);
-    }
-  }, {
-    key: "hideIntro",
-    value: function hideIntro() {
-      this.intro.classList.add(visibleClass);
-    }
-  }, {
-    key: "showCarousel",
-    value: function showCarousel() {
-      this.carousel.classList.remove(visibleClass);
-    }
-  }, {
-    key: "hideCarousel",
-    value: function hideCarousel() {
-      this.carousel.classList.add(visibleClass);
-    }
-  }]);
-
-  return Carousel;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (function () {
-  var elem = document.querySelector("[".concat(CONSTANTS.attrName, "]"));
-
-  if (elem) {
-    new Carousel(elem);
-  }
-});
-
-/***/ }),
-
-/***/ "./public/src/js/main.js":
+/*! Integration 0.0.0 built on: Wed Oct 16 2019 16:45:18 16a290563a8406ee7a4b */
+!function(r){var n={};function o(e){if(n[e])return n[e].exports;var t=n[e]={i:e,l:!1,exports:{}};return r[e].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=n,o.d=function(e,t,r){o.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},o.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},o.t=function(t,e){if(1&e&&(t=o(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(o.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var n in t)o.d(r,n,function(e){return t[e]}.bind(null,n));return r},o.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return o.d(t,"a",t),t},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.p="",o(o.s=0)}({"./node_modules/@babel/runtime/helpers/assertThisInitialized.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
+  \**********************************************************************/
+/*! no static exports found */function(e,t){e.exports=function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}},"./node_modules/@babel/runtime/helpers/classCallCheck.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
+  \***************************************************************/
+/*! no static exports found */function(e,t){e.exports=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}},"./node_modules/@babel/runtime/helpers/createClass.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
+  \************************************************************/
+/*! no static exports found */function(e,t){function n(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}e.exports=function(e,t,r){return t&&n(e.prototype,t),r&&n(e,r),e}},"./node_modules/@babel/runtime/helpers/get.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/get.js ***!
+  \****************************************************/
+/*! no static exports found */function(n,e,t){var s=t(/*! ./superPropBase */"./node_modules/@babel/runtime/helpers/superPropBase.js");function o(e,t,r){return"undefined"!=typeof Reflect&&Reflect.get?n.exports=o=Reflect.get:n.exports=o=function(e,t,r){var n=s(e,t);if(n){var o=Object.getOwnPropertyDescriptor(n,t);return o.get?o.get.call(r):o.value}},o(e,t,r||e)}n.exports=o},"./node_modules/@babel/runtime/helpers/getPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */function(t,e){function r(e){return t.exports=r=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},r(e)}t.exports=r},"./node_modules/@babel/runtime/helpers/inherits.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
+  \*********************************************************/
+/*! no static exports found */function(e,t,r){var n=r(/*! ./setPrototypeOf */"./node_modules/@babel/runtime/helpers/setPrototypeOf.js");e.exports=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&n(e,t)}},"./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
+  \**************************************************************************/
+/*! no static exports found */function(e,t,r){var n=r(/*! ../helpers/typeof */"./node_modules/@babel/runtime/helpers/typeof.js"),o=r(/*! ./assertThisInitialized */"./node_modules/@babel/runtime/helpers/assertThisInitialized.js");e.exports=function(e,t){return!t||"object"!==n(t)&&"function"!=typeof t?o(e):t}},"./node_modules/@babel/runtime/helpers/setPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */function(r,e){function n(e,t){return r.exports=n=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},n(e,t)}r.exports=n},"./node_modules/@babel/runtime/helpers/superPropBase.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/superPropBase.js ***!
+  \**************************************************************/
+/*! no static exports found */function(e,t,r){var n=r(/*! ./getPrototypeOf */"./node_modules/@babel/runtime/helpers/getPrototypeOf.js");e.exports=function(e,t){for(;!Object.prototype.hasOwnProperty.call(e,t)&&null!==(e=n(e)););return e}},"./node_modules/@babel/runtime/helpers/typeof.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
+  \*******************************************************/
+/*! no static exports found */function(t,e){function r(e){return(r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function n(e){return"function"==typeof Symbol&&"symbol"===r(Symbol.iterator)?t.exports=n=function(e){return r(e)}:t.exports=n=function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":r(e)},n(e)}t.exports=n},"./public/src/js/carousel.js":
+/*!***********************************!*\
+  !*** ./public/src/js/carousel.js ***!
+  \***********************************/
+/*! exports provided: default */function(e,t,r){"use strict";r.r(t);var n=r(/*! @babel/runtime/helpers/classCallCheck */"./node_modules/@babel/runtime/helpers/classCallCheck.js"),o=r.n(n),s=r(/*! @babel/runtime/helpers/createClass */"./node_modules/@babel/runtime/helpers/createClass.js"),i=r.n(s),a=r(/*! @babel/runtime/helpers/possibleConstructorReturn */"./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"),l=r.n(a),u=r(/*! @babel/runtime/helpers/getPrototypeOf */"./node_modules/@babel/runtime/helpers/getPrototypeOf.js"),c=r.n(u),d=r(/*! @babel/runtime/helpers/get */"./node_modules/@babel/runtime/helpers/get.js"),f=r.n(d),p=r(/*! @babel/runtime/helpers/inherits */"./node_modules/@babel/runtime/helpers/inherits.js"),b=r.n(p),h=r(/*! ./component */"./public/src/js/component.js"),m="is-hidden",v={currentslide:0},y=function(e){function r(e,t){var s;return o()(this,r),(s=l()(this,c()(r).call(this,r,e,t))).carousel=s.elem.querySelector("[data-dossier-carousel]"),s.intro=s.elem.querySelector("[data-dossier-intro]"),s.nav=s.elem.querySelector("[data-dossier-navigation]"),s.carousel.dataset.currentslide=r.defaults.currentslide,s.carousel.dataset.slidecount=s.carousel.querySelectorAll(".c-dossier__carousel__item").length,s.intro.addEventListener("click",function(e){e.target.matches(".c-btn")&&(s.hideIntro(),s.changeSlide(+s.carousel.dataset.currentslide),s.showCarousel())}),s.nav.addEventListener("click",function(e){var t=e.target;t.matches("[data-dossier-navigation-item]")&&s.handleDossierNavClick(t)}),s.carousel.addEventListener("click",function(e){var t=e.target;t.matches("[data-dossier-navigation-item]")&&s.handleDossierNavClick(t)}),s.carousel.addEventListener("click",function(e){var t=e.target,r=e.target.dataset,n=void 0===r?"":r;if(t.matches("[data-dossier-carousel-nav]")){var o=n.dossierCarouselNav;"prev"===o&&0<+s.carousel.dataset.currentslide?s.changeSlide(+s.carousel.dataset.currentslide-1):"next"===o&&+s.carousel.dataset.currentslide!=+s.carousel.dataset.slidecount-1?s.changeSlide(+s.carousel.dataset.currentslide+1):"prev"===o&&0==+s.carousel.dataset.currentslide&&(s.hideCarousel(),s.showIntro())}}),s}return b()(r,e),i()(r,[{key:"handleDossierNavClick",value:function(e){var t=e.dataset.dossierNavigationItem;"intro"===t?(this.showIntro(),this.hideCarousel(),this.changeSlide(0)):+t&&(this.hideIntro(),this.showCarousel(),this.changeSlide(+t-1))}},{key:"changeSlide",value:function(e){var t=100*e;this.carousel.querySelector(".c-dossier__carousel__items").style.transform="translateX(-".concat(t,"%)"),this.carousel.dataset.currentslide=+e,this.removeActiveLinks(),this.nav.querySelector(".c-dossier__navigation__item:nth-child(".concat(e+2,")")).classList.add("active"),this.carousel.querySelector(".c-dossier__carousel__nav__item:nth-child(".concat(e+1,")")).classList.add("active"),e===+this.carousel.dataset.slidecount-1?(this.enableButtons(),this.disableButton(this.carousel.querySelector('[data-dossier-carousel-nav="next"]'))):this.enableButtons()}},{key:"disableButton",value:function(e){e.setAttribute("disabled","")}},{key:"enableButtons",value:function(){this.carousel.querySelector("[data-dossier-carousel-nav][disabled]")&&this.carousel.querySelector("[data-dossier-carousel-nav][disabled]").removeAttribute("disabled")}},{key:"removeActiveLinks",value:function(){this.nav.querySelector(".c-dossier__navigation__item.active")&&this.carousel.querySelector(".c-dossier__carousel__nav__item.active")&&(this.nav.querySelector(".c-dossier__navigation__item.active").classList.remove("active"),this.carousel.querySelector(".c-dossier__carousel__nav__item.active").classList.remove("active"))}},{key:"showIntro",value:function(){this.intro.classList.remove(m)}},{key:"hideIntro",value:function(){this.intro.classList.add(m)}},{key:"showCarousel",value:function(){this.carousel.classList.remove(m)}},{key:"hideCarousel",value:function(){this.carousel.classList.add(m)}}],[{key:"init",value:function(e,t){return f()(c()(r),"init",this).call(this,this,e,t)}},{key:"defaults",get:function(){return v}}]),r}(h.default);t.default=y},"./public/src/js/component.js":
+/*!************************************!*\
+  !*** ./public/src/js/component.js ***!
+  \************************************/
+/*! exports provided: default */function(e,t,r){"use strict";r.r(t);var n=r(/*! @babel/runtime/helpers/classCallCheck */"./node_modules/@babel/runtime/helpers/classCallCheck.js"),o=r.n(n),s=r(/*! @babel/runtime/helpers/createClass */"./node_modules/@babel/runtime/helpers/createClass.js"),i=r.n(s),a=function(){function n(e,t,r){o()(this,n),t instanceof Element||console.error(Error("".concat(t," is not an HTML Element"))),this.elem=t}return i()(n,null,[{key:"init",value:function(e,t,r){var n=null;if(t instanceof Element)n=new e(t,r);else if(t&&t instanceof NodeList){for(var o=[],s=0;s<t.length;s+=1)o.push(new e(t[s],r));n=o}return n}}]),n}();t.default=a},"./public/src/js/main.js":
 /*!*******************************!*\
   !*** ./public/src/js/main.js ***!
   \*******************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _dossier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dossier */ "./public/src/js/dossier.js");
-
-Object(_dossier__WEBPACK_IMPORTED_MODULE_0__["default"])();
-
-/***/ }),
-
-/***/ 0:
+/*! no exports provided */function(e,t,r){"use strict";r.r(t);var n=r(/*! ./carousel */"./public/src/js/carousel.js"),o=document.querySelector("[".concat("data-app","]"));o&&n.default.init(o,[])},0:
 /*!*************************************!*\
   !*** multi ./public/src/js/main.js ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./public/src/js/main.js */"./public/src/js/main.js");
-
-
-/***/ })
-
-/******/ });
+/*! no static exports found */function(e,t,r){e.exports=r(/*! ./public/src/js/main.js */"./public/src/js/main.js")}});
 //# sourceMappingURL=main.js.map

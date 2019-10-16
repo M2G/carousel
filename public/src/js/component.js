@@ -8,7 +8,6 @@ class Component {
   constructor(ClassDef, elem, _) {
     if (!(elem instanceof Element)) {
       console.error(Error(`${elem} is not an HTML Element`));
-      return;
     }
 
     this.elem = elem;
@@ -26,7 +25,7 @@ class Component {
       instances = new ClassDef(elem, options);
     } else if (!!elem && (elem instanceof NodeList)) {
       const instancesArr = [];
-      for (let i = 0; i < elem.length; i++) {
+      for (let i = 0; i < elem.length; i += 1) {
         instancesArr.push(new ClassDef(elem[i], options));
       }
       instances = instancesArr;

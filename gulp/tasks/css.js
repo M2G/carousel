@@ -1,5 +1,6 @@
 const config = require('../config');
 
+const browserslist = require('browserslist');
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
@@ -36,10 +37,14 @@ module.exports = {
   },
   build: function() {
 
+    // @see use new autoprefixer API :https://github.com/ng-packagr/ng-packagr/pull/1311/files
+
     const settings = {
       src: path.join(config.root.src, config.tasks.css.src, '/style.scss'),
       dest: path.join(config.root.dest, config.tasks.css.dest)
     };
+
+    const overrideBrowserslist = browserslist(undefined, { path: config.root.src });
 
     logAlert('Compiling Sass files', 'info', settings.dest);
 
@@ -49,7 +54,7 @@ module.exports = {
       }))
       .pipe(sourcemaps.init())
       .pipe(sass())
-      .pipe(autoprefixer(config.tasks.css.autoprefixer))
+      .pipe(autoprefixer({ overrideBrowserslist, grid: true }))
       .pipe(production(minifyCss()))
       .pipe(head('/**', '*/'))
       .pipe(sourcemaps.write('./'))

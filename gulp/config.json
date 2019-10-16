@@ -10,7 +10,7 @@
       "extensions": ["sass", "scss", "css"],
       "main": "style.css",
       "autoprefixer": {
-        "browsers": ["> 5%", "last 2 versions", "ie 9"]
+        "browsers": ["last 2 version","> 2%"]
       }
     }
   }
