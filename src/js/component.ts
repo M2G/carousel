@@ -2,7 +2,8 @@
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class Component {
   // eslint-disable-next-line
-  private elem: any;
+  // @ts-ignore
+  protected elem: any;
   // eslint-disable-next-line
   /**
    * Generic constructor for all components
@@ -27,7 +28,7 @@ class Component {
    * @param {Object} options
    */
   // eslint-disable-next-line
-  static init(ClassDef, elem, options) {
+  static create(ClassDef, elem, options) {
     let instances = null;
     if (elem instanceof Element) {
       // eslint-disable-next-line
