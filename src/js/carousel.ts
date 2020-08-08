@@ -1,4 +1,4 @@
-/* eslint-disabled */
+/* eslint-disable */
 import Component from './component';
 
 const visibleClass = 'is-hidden';

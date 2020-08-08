@@ -17,7 +17,7 @@ module.exports = {
     publicPath: '/',
     contentBase: paths.appPublic,
     watchContentBase: true,
-    port: 8787,
+    port: 8686,
     historyApiFallback: {
       disableDotRule: true,
     },
