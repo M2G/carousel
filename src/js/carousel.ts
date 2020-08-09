@@ -52,7 +52,6 @@ class Carousel extends Component {
       }
     });
 
-
     // @ts-ignore
     this.carousel.addEventListener('click', ({ target, target: { dataset } }: { matches: () => {} }) => {
       if (target.matches('[data-dossier-carousel-nav]')) {
@@ -65,7 +64,6 @@ class Carousel extends Component {
         } else if (direction === previous && index === 0) {
          this.hideCarousel();
          this.showIntro();
-
         }
       }
     });
@@ -79,16 +77,16 @@ class Carousel extends Component {
     return super.create(this, elem, options);
   }
 
-  init(container) {
+  init(container): void {
     this.container = container;
     this.render();
   }
 
-  static markup(instance) {
+  static markup(instance): string {
     return markup;
   }
 
-  render() {
+  render(): void {
     this.container.innerHTML = Carousel.markup(this);
   }
 
@@ -96,12 +94,12 @@ class Carousel extends Component {
     return this.currentslide;
   }
 
-  setCurrentSlide(currentslide) {
+  setCurrentSlide(currentslide): void {
     this.currentslide = currentslide
   }
 
 
-  handleDossierNavClick({ dataset }) {
+  handleDossierNavClick({ dataset }): void {
     const goTo = dataset?.dossierNavigationItem;
     if (goTo === 'intro') {
       this.showIntro();
@@ -114,7 +112,7 @@ class Carousel extends Component {
     }
   }
 
-  changeSlide(slideNumber) {
+  changeSlide(slideNumber): void {
     const translate = slideNumber * 100;
     this.carousel.querySelector('.c-dossier__carousel__items').style.transform = `translateX(-${translate}%)`;
     this.setCurrentSlide(slideNumber);
@@ -129,21 +127,21 @@ class Carousel extends Component {
     }
   }
 
-  disableButton(button) {
+  disableButton(button): void {
     button.setAttribute('disabled', '');
   }
 
-  enableButtons() {
+  enableButtons(): void {
     if (this.carousel?.querySelector('[data-dossier-carousel-nav][disabled]')) {
       this.carousel?.querySelector('[data-dossier-carousel-nav][disabled]')?.removeAttribute('disabled');
     }
   }
 
-  removeActiveLinks() {
+  removeActiveLinks(): void {
     if (this.nav?.querySelector('.c-dossier__navigation__item.active') &&
       this.carousel?.querySelector('.c-dossier__carousel__nav__item.active')) {
-      this.nav?.querySelector('.c-dossier__navigation__item.active')?.classList.remove('active');
-      this.carousel?.querySelector('.c-dossier__carousel__nav__item.active')?.classList.remove('active');
+      this.nav?.querySelector('.c-dossier__navigation__item.active').classList.remove('active');
+      this.carousel?.querySelector('.c-dossier__carousel__nav__item.active').classList.remove('active');
     }
   }
 
