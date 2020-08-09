@@ -1,18 +1,18 @@
 {
-  "name": "@m2g/webpack-typescript-starter-pack",
+  "name": "@m2g/carousel",
   "version": "0.0.1",
-  "description": "webpack typescript starter pack",
+  "description": "older project to carousel that allows reading more enjoyable",
   "main": "./src/index.ts",
   "private": false,
   "author": "M2G",
   "license": "MIT",
-  "homepage": "https://github.com/M2G/webpack-typescript-starter-pack",
+  "homepage": "https://github.com/M2G/carousel",
   "bugs": {
-    "url": "https://github.com/M2G/webpack-typescript-starter-pack/issues"
+    "url": "https://github.com/M2G/carousel/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/M2G/webpack-typescript-starter-pack.git"
+    "url": "https://github.com/M2G/carousel.git"
   },
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
