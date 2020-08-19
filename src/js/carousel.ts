@@ -29,12 +29,12 @@ class Carousel extends Component {
     super(Carousel, elem, params);
 
     this.init(elem);
+    this.currentslide = Carousel.defaults.currentslide;
+
     this.carousel = this.elem?.querySelector('[data-dossier-carousel]');
     this.intro = this.elem?.querySelector('[data-dossier-intro]');
     this.introBtn = this.intro?.querySelector('.c-btn');
-
     this.nav = this.elem?.querySelector('[data-dossier-navigation]');
-    this.currentslide = Carousel.defaults.currentslide;
     this.slidecount = this.carousel?.querySelectorAll('.c-dossier__carousel__item')?.length;
 
     // intro
@@ -83,12 +83,12 @@ class Carousel extends Component {
     return super.create(this, elem, options);
   }
 
-  public init(container): void {
+  private init(container): void {
     this.container = container;
     this.render();
   }
 
-  static markup(instance): string {
+  static markup(_): string {
     return markup;
   }
 
