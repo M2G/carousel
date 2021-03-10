@@ -1,1 +1,1 @@
-# WEBPACK TS STATER PACK
+# Carousel in VanillaJS (with custom Bootstrap)
