@@ -17,7 +17,7 @@ class Carousel extends Component {
 
   private readonly intro: Element | null;
 
-  private container: any;
+  // private container: any;
 
   private currentslide: any;
 
@@ -28,7 +28,7 @@ class Carousel extends Component {
   public constructor(elem, params) {
     super(Carousel, elem, params);
 
-    this.init(elem);
+    // this.init(elem);
     this.currentslide = Carousel.defaults.currentslide;
 
     this.carousel = this.elem?.querySelector('[data-dossier-carousel]');
@@ -83,7 +83,7 @@ class Carousel extends Component {
     return super.create(this, elem, options);
   }
 
-  private init(container): void {
+  /*private init(container): void {
     this.container = container;
     this.render();
   }
@@ -94,7 +94,7 @@ class Carousel extends Component {
 
   private render(): void {
     this.container.innerHTML = Carousel.markup(this);
-  }
+  }*/
 
   public getCurrentSlide(): number {
     return this.currentslide;
