@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Component from './component';
-import markup from './markup';
+// import markup from './markup';
 
 const visibleClass = 'is-hidden';
 const previous = 'prev';
