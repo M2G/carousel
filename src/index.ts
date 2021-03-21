@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Carousel from './js/carousel';
 import './index.scss';
 

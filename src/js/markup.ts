@@ -1,3 +1,4 @@
+/* eslint-disable */
 const markup = `
 <main>
     <nav class="c-navigation">
@@ -9,7 +10,7 @@ const markup = `
       </ul>
     </nav>
     <div class="o-page--darkened o-page--dossier">
-      <div class="o-page--dossier__background" style="background-image: url('')">
+      <div class="o-page--dossier__background" style="background-image: url('https://img.com')">
         <article class="c-dossier">
           <section class="c-dossier__section">
             <div class="c-dossier__intro" data-dossier-intro>
