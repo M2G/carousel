@@ -1,7 +1,5 @@
 {
   "presets": [
-    "react-app",
-    "@babel/preset-react",
     "@babel/preset-env",
     "@babel/preset-typescript",
     "airbnb"

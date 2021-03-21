@@ -36,10 +36,12 @@
       "ESNext",
       "dom"
     ],
-    "rootDirs": ["src", "stories"],
+    "rootDirs": ["src"],
     "baseUrl": "./",
     "paths": {
-      "@public": ["./public/*"]
+      "@public": ["./public/*"],
+      "@constants": ["./src/constants/*"],
+      "@utils": ["./src/utils/*"]
     }
   },
   "include": [

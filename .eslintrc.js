@@ -4,8 +4,6 @@ module.exports = {
   "root": true,
   parser: "@typescript-eslint/parser",
   extends: [
-    "react-app",
-    "react-app/jest",
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
@@ -18,8 +16,6 @@ module.exports = {
     "prettier",
     "plugin:react/recommended",
     "eslint:all",
-    "plugin:react/all",
-    "plugin:jsx-a11y/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
@@ -33,13 +29,9 @@ module.exports = {
     tsconfigRootDir: __dirname,
     ecmaVersion: 2018,
     sourceType: 'module',
-    extraFileExtensions: [".scss"],
-    ecmaFeatures: {
-      "jsx": true
-    },
-    useJSXTextNode: true
+    extraFileExtensions: [".scss"]
   },
-  plugins: ["react", "react-hooks", "@typescript-eslint", "jest", "prettier", "jsx-a11y"],
+  plugins: ["@typescript-eslint", "jest", "prettier"],
   rules: {
     "no-redeclare": 0,
     "no-return-assign": 0,
@@ -65,12 +57,6 @@ module.exports = {
 
     "sort-imports": 0,
     "implicit-arrow-linebreak": 0,
-
-    "jsx-a11y/media-has-caption": 0,
-    "jsx-a11y/rule-name": "off",
-    "jsx-a11y/click-events-have-key-events": 'off',
-    "jsx-a11y/label-has-associated-control": 1,
-    "jsx-a11y/no-noninteractive-element-interactions": 1,
 
     "import/extensions": "off",
     "import/no-unresolved": 0,
@@ -101,27 +87,7 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": 1,
     "typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/consistent-type-imports": 1,
-    "@typescript-eslint/object-curly-spacing": 1,
-
-    "react/jsx-newline": 1,
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-handler-names": 1,
-    "react/jsx-child-element-spacing": 1,
-    "react/jsx-props-no-spreading": 0,
-    "react/prop-types": "off",
-    "react/static-property-placement": 0,
-    "react/jsx-filename-extension": [0],
-    "react/no-set-state": 'off',
-    "react/jsx-no-literals": 'off',
-    "react/jsx-max-depth": 'off',
-    "react/jsx-wrap-multilines": 0,
-    "react/button-has-type": 0,
-    "react/sort-comp": 0,
-    "react/function-component-definition": [0, {
-      "namedComponents": "function-declaration" | "function-expression" | "arrow-function",
-      "unnamedComponents": "function-expression" | "arrow-function"
-    }],
+    "@typescript-eslint/object-curly-spacing": 1
   },
   settings: {
     "html/html-extensions": [".html"],
@@ -129,11 +95,11 @@ module.exports = {
       version: "detect"
     },
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [".ts"]
     },
     "import/resolver": {
       node: {
-        extensions: [".js",".jsx",".ts",".tsx"]
+        extensions: [".js", ".ts"]
       }
     }
   },
