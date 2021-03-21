@@ -1,6 +1,5 @@
 /* eslint-disable */
 import Component from './component';
-// import markup from './markup';
 
 const visibleClass = 'is-hidden';
 const previous = 'prev';
@@ -28,7 +27,6 @@ class Carousel extends Component {
   public constructor(elem, params) {
     super(Carousel, elem, params);
 
-    // this.init(elem);
     this.currentslide = Carousel.defaults.currentslide;
 
     this.carousel = this.elem?.querySelector('[data-dossier-carousel]');
@@ -82,19 +80,6 @@ class Carousel extends Component {
   static create(elem, options) {
     return super.create(this, elem, options);
   }
-
-  /*private init(container): void {
-    this.container = container;
-    this.render();
-  }
-
-  static markup(_): string {
-    return markup;
-  }
-
-  private render(): void {
-    this.container.innerHTML = Carousel.markup(this);
-  }*/
 
   public getCurrentSlide(): number {
     return this.currentslide;
