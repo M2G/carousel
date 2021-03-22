@@ -13,7 +13,6 @@
     "sourceMap": true,
     "allowJs": true,
     "checkJs": true,
-    "jsx": "react",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "declaration": true,
