@@ -35,9 +35,15 @@ $dossier_padding: 20px;
       content: '';
       transition: $_transition-default;
 
-      opacity: .5;
+      opacity: 0.5;
       background-color: lighten($_color-backdrop, 1%);
-      background-image: repeating-linear-gradient(-40deg, transparent, transparent 5px, rgba(lighten($_color-backdrop, 5%), 1) 5px, rgba(lighten($_color-backdrop, 5%), 1) 10px);
+      background-image: repeating-linear-gradient(
+        -40deg,
+        transparent,
+        transparent 5px,
+        rgba(lighten($_color-backdrop, 5%), 1) 5px,
+        rgba(lighten($_color-backdrop, 5%), 1) 10px
+      );
     }
   }
 }
@@ -73,16 +79,22 @@ $dossier_padding: 20px;
       content: '';
       transition: $_transition-default;
 
-      opacity: .6;
-      background-color: lighten($_color-backdrop,1%);
-      background-image: repeating-linear-gradient(-40deg, transparent, transparent 5px, rgba(lighten($_color-backdrop, 5%),1) 5px, rgba(lighten($_color-backdrop, 5%),1) 10px);
+      opacity: 0.6;
+      background-color: lighten($_color-backdrop, 1%);
+      background-image: repeating-linear-gradient(
+        -40deg,
+        transparent,
+        transparent 5px,
+        rgba(lighten($_color-backdrop, 5%), 1) 5px,
+        rgba(lighten($_color-backdrop, 5%), 1) 10px
+      );
     }
   }
 
   &:hover {
     .c-dossier__bloc__figure {
       &::after {
-        opacity: .85;
+        opacity: 0.85;
       }
     }
   }
@@ -145,7 +157,6 @@ $dossier_padding: 20px;
     }
   }
 
-
   &__footer {
     position: absolute;
     z-index: 1;
@@ -172,7 +183,6 @@ $dossier_padding: 20px;
     }
   }
 }
-
 
 .c-dossier {
   @include bp(smallest) {
@@ -226,7 +236,7 @@ $dossier_padding: 20px;
   margin-left: 30px;
   padding: 10px;
 
-  background-color: rgba($_color-black, .85);
+  background-color: rgba($_color-black, 0.85);
 
   &__item {
     line-height: 1.2;
@@ -250,7 +260,7 @@ $dossier_padding: 20px;
     }
 
     &:first-child {
-      margin-bottom: .5em;
+      margin-bottom: 0.5em;
     }
 
     &:nth-child(1) {
@@ -267,7 +277,7 @@ $dossier_padding: 20px;
   margin-left: 30px;
   padding: 10px;
 
-  background-color: rgba(29, 29, 27, .85);
+  background-color: rgba(29, 29, 27, 0.85);
 
   &__title {
     font-size: 20px;
@@ -338,7 +348,9 @@ $dossier_padding: 20px;
 .c-dossier__carousel {
   $carousel_nav_height: 70px;
   $carousel_title_height: 50px;
-  $carousel_body_max_height: (($dossier_padding * 3) + ($carousel_title_height * 2) - $dossier_padding) + $carousel_nav_height;
+  $carousel_body_max_height: (
+      ($dossier_padding * 3) + ($carousel_title_height * 2) - $dossier_padding
+    ) + $carousel_nav_height;
   $tablet_carousel_max_height: $dossier_padding + $_component_height_header;
   $mobile_carousel_max_height: 115px;
 
@@ -379,7 +391,7 @@ $dossier_padding: 20px;
     text-transform: uppercase;
 
     color: $_color-brand;
-    background-color: rgba($_color-black, .85);
+    background-color: rgba($_color-black, 0.85);
   }
 
   &__nav {
@@ -440,7 +452,7 @@ $dossier_padding: 20px;
         transition: background-color 300ms ease;
         pointer-events: none;
 
-        background-color: rgba($_color-black, .85);
+        background-color: rgba($_color-black, 0.85);
       }
     }
 
@@ -468,7 +480,6 @@ $dossier_padding: 20px;
     }
   }
 
-
   &__items {
     display: flex;
 
@@ -490,8 +501,10 @@ $dossier_padding: 20px;
     }
 
     &__body {
-      $table_carousel_body_max_height: $carousel_body_max_height + $_component_height_header;
-      $mobile_carousel_body_max_height: ($carousel_body_max_height + 115px) - $dossier_padding;
+      $table_carousel_body_max_height: $carousel_body_max_height +
+        $_component_height_header;
+      $mobile_carousel_body_max_height: ($carousel_body_max_height + 115px) -
+        $dossier_padding;
 
       @include bp_height(0px, $dossier_height + $_component_height_header) {
         @include bp(0px, small) {
