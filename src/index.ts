@@ -1,5 +1,5 @@
 /* eslint-disable */
-import Carousel from './js/carousel';
+import Carousel from './carousel';
 import './index.scss';
 
 const elem = document.getElementById('app');

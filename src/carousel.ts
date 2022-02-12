@@ -29,6 +29,8 @@ class Carousel extends Component {
 
     this.currentslide = Carousel.defaults.currentslide;
 
+    console.log('--->', this.elem);
+
     this.carousel = this.elem?.querySelector('[data-dossier-carousel]');
     this.intro = this.elem?.querySelector('[data-dossier-intro]');
     this.introBtn = this.intro?.querySelector('.c-btn');
