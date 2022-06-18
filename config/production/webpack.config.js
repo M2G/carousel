@@ -1,13 +1,12 @@
 const TerserPlugin            = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const safePostCssParser       = require('postcss-safe-parser');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const baseConfig              = require('../base/webpack.config');
 const output                  = require('./output');
 const plugins                 = require('./plugins');
 const rules                   = require('./rules');
 
 module.exports = Object.assign({}, baseConfig, {
-  mode: 'production',
+  mode: 'staging',
   bail: true,
   devtool: 'source-map',
   output,
@@ -42,28 +41,8 @@ module.exports = Object.assign({}, baseConfig, {
         },
         sourceMap: true,
       }),
-      new OptimizeCSSAssetsPlugin({
-        cssProcessor: require('cssnano'),
-        cssProcessorPluginOptions: {
-          preset: ['default', { discardComments: { removeAll: true } }],
-        },
-        cssProcessorOptions: {
-          parser: safePostCssParser,
-          map: {
-            inline: false,
-            annotation: true,
-          },
-        },
-        canPrint: true
-      }),
+      new CssMinimizerPlugin(),
     ],
-    splitChunks: {
-      chunks: 'all',
-      name: false,
-    },
-    runtimeChunk: {
-      name: entrypoint => `runtime-${entrypoint.name}`,
-    },
   },
   plugins
 });

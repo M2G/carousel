@@ -1,5 +1,5 @@
-const autoprefixer = require('autoprefixer');
-const rules = require('../base/rules');
+const getStyleLoaders = require('../webpack/getStyleLoaders');
+let rules = require('../base/rules');
 
 const cssRegex = /\.css$/;
 const sassRegex = /\.(scss|sass)$/;
@@ -9,178 +9,83 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 const cssLoaderRule = {
   test: cssRegex,
   exclude: cssModuleRegex,
-  use: [
-    {
-      loader: require.resolve('style-loader'),
+  use: getStyleLoaders({
+    importLoaders: 1,
+    sourceMap: true,
+    modules: {
+      mode: 'icss',
     },
-    {
-      loader: require.resolve('css-loader'),
-      options: {
-        importLoaders: 1,
-        sourceMap: false
-      },
-    },
-    {
-      loader: require.resolve('postcss-loader'),
-      options: {
-        ident: 'postcss',
-        plugins: () => [
-          require('postcss-flexbugs-fixes'),
-          require('postcss-preset-env')({
-            autoprefixer: {
-              flexbox: 'no-2009',
-            },
-            stage: 3,
-          }),
-          autoprefixer({
-            browsers: [
-              "> 1%",
-              "last 2 versions"
-            ]
-          })
-        ],
-        sourceMap: false,
-      },
-    },
-  ],
+  },
+    null,
+    true,
+    ),
   sideEffects: true,
-};
+}
 
 const cssModuleLoaderRule = {
   test: cssModuleRegex,
-  use: [
-    {
-      loader: require.resolve('style-loader'),
+  use: getStyleLoaders({
+    importLoaders: 1,
+    sourceMap: true,
+    modules: {
+      mode: 'local'
     },
-    {
-      loader: require.resolve('css-loader'),
-      options: {
-        importLoaders: 1,
-        sourceMap: false,
-        modules: true
-      },
-    },
-    {
-      loader: require.resolve('postcss-loader'),
-      options: {
-        ident: 'postcss',
-        plugins: () => [
-          require('postcss-flexbugs-fixes'),
-          require('postcss-preset-env')({
-            autoprefixer: {
-              flexbox: 'no-2009',
-            },
-            stage: 3,
-          }),
-          autoprefixer({
-            browsers: [
-              "> 1%",
-              "last 2 versions"
-            ]
-          })
-        ],
-        sourceMap: false,
-      },
-    },
-  ],
+  },
+  null,
+  true,
+  ),
 };
 
 const sassLoaderRule = {
   test: sassRegex,
   exclude: sassModuleRegex,
-  use: [
+  use: getStyleLoaders(
     {
-      loader: require.resolve('style-loader'),
-    },
-    {
-      loader: require.resolve('css-loader'),
-      options: {
-        importLoaders: 2,
-        sourceMap: false,
+      importLoaders: 3,
+      sourceMap: true,
+      modules: {
+        mode: 'icss',
       },
     },
-    {
-      loader: require.resolve('postcss-loader'),
-      options: {
-        ident: 'postcss',
-        plugins: () => [
-          require('postcss-flexbugs-fixes'),
-          require('postcss-preset-env')({
-            autoprefixer: {
-              flexbox: 'no-2009',
-            },
-            stage: 3,
-          }),
-        ],
-        sourceMap: false,
-      },
-    },
-    {
-      loader: require.resolve('resolve-url-loader'),
-      options: {
-        sourceMap: false,
-      },
-    },
-    {
-      loader: require.resolve('sass-loader'),
-      options: {
-        sourceMap: false,
-      },
-    },
-  ],
+    'sass-loader',
+    true
+  ),
   sideEffects: true,
 };
 
 const sassModuleLoaderRule = {
   test: sassModuleRegex,
-  use: [
+  use: getStyleLoaders(
     {
-      loader: require.resolve('style-loader'),
-    },
-    {
-      loader: require.resolve('css-loader'),
-      options: {
-        importLoaders: 2,
-        sourceMap: true,
-        modules: true
+      importLoaders: 3,
+      sourceMap: true,
+      modules: {
+        mode: 'local',
+        getLocalIdent: (context, localIdentName, localName, options) => {
+          return localIdentName.replace("-src", "").toLowerCase();
+        },
       },
     },
-    {
-      loader: require.resolve('postcss-loader'),
-      options: {
-        ident: 'postcss',
-        plugins: () => [
-          require('postcss-flexbugs-fixes'),
-          require('postcss-preset-env')({
-            autoprefixer: {
-              flexbox: 'no-2009',
-            },
-            stage: 3,
-          }),
-        ],
-        sourceMap: true,
-      },
-    },
-    {
-      loader: require.resolve('resolve-url-loader'),
-      options: {
-        sourceMap: true,
-      },
-    },
-    {
-      loader: require.resolve('sass-loader'),
-      options: {
-        sourceMap: true,
-      },
-    },
-  ],
+    'sass-loader',
+    true
+  ),
 };
-
+/*
 rules.push(
   cssLoaderRule,
   cssModuleLoaderRule,
   sassLoaderRule,
   sassModuleLoaderRule
 );
+*/
+
+rules[0].oneOf.push(
+  cssLoaderRule,
+  cssModuleLoaderRule,
+  sassLoaderRule,
+  sassModuleLoaderRule
+);
+
+rules = rules.filter(Boolean);
 
 module.exports = rules;

@@ -1,18 +1,15 @@
 const webpack = require('webpack');
 const path = require('path');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const paths = require('./paths');
 
 const plugins = [
-  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-  new ForkTsCheckerWebpackPlugin({
-    eslint: {
-      files: './src/**/*.{ts,tsx,js,jsx}', // required - same as command `eslint ./src/**/*.{ts,tsx,js,jsx} --ext .ts,.tsx,.js,.jsx`
-    },
+  new webpack.IgnorePlugin({
+    resourceRegExp: /^\.\/locale$/,
+    contextRegExp: /moment$/,
   }),
-  new ManifestPlugin({
+  new WebpackManifestPlugin({
     fileName: 'asset-manifest.json',
     publicPath: paths.appPublic,
     generate: (seed, files, entrypoints) => {
@@ -32,7 +29,7 @@ const plugins = [
   }),
   new ESLintPlugin({
     // Plugin options
-    extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
+    extensions: ['js', 'mjs', 'ts'],
     eslintPath: require.resolve('eslint'),
     emitWarning: true,
     context: paths.appSrc,

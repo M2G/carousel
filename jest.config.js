@@ -9,9 +9,8 @@ module.exports = {
     "<rootDir>/src"
   ],
   "transform": {
-    "^.+\\.(js)$": "babel-jest",
     "^.+\\.(ts)?$": "ts-jest",
-    "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js"
+    "^.+\\.css$": "<rootDir>/cssTransform.js"
   },
   "transformIgnorePatterns": [
     "[/\\\\]node_modules[/\\\\].+\\.(js|ts)$",
@@ -20,8 +19,9 @@ module.exports = {
   "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts?$",
   "modulePaths": [],
   "moduleNameMapper": {
+    //"^(components|config|constants|actions|reducers|styles|api|hooks|utils|store|storage|schemas|tests)$": "<rootDir>/src/$1",
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-    '\\.(css|scss)$': 'identity-obj-proxy',
+    '\\.(css|scss)$': 'identity-obj-proxy'
   },
   "moduleFileExtensions": [
     "ts",
@@ -30,11 +30,8 @@ module.exports = {
     "node"
   ],
   "testPathIgnorePatterns": [
+    "<rootDir>/src",
     "<rootDir>/(build|node_modules)/"
   ],
-  "testEnvironment": "jest-environment-jsdom-sixteen",
-
-  // Setup Enzyme
-  // "snapshotSerializers": ["enzyme-to-json/serializer"],
-  //"setupTestFrameworkScriptFile": "<rootDir>/setupEnzyme.ts",
+  "testEnvironment": "jsdom"
 };

@@ -22,6 +22,8 @@ function ensureSlash(inputPath, needsSlash) {
   }
 }
 
+const publicUrlOrPath = '/';
+
 const getPublicUrl = appPackageJson =>
   envPublicUrl || require(appPackageJson).homepage;
 
@@ -67,7 +69,7 @@ module.exports = {
   appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.ejs'),
+  appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
@@ -75,11 +77,14 @@ module.exports = {
   appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveModule(resolveApp, 'src/setupTests'),
+  appWebpackCache: resolveApp('node_modules/.cache'),
   // uncomment for use setupProxy
   // proxySetup: resolveApp('config/base/setupProxy.js'),
+  appTsBuildInfoFile: resolveApp('node_modules/.cache/tsconfig.tsbuildinfo'),
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  publicUrlOrPath
 };
 
 module.exports.moduleFileExtensions = moduleFileExtensions;

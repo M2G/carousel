@@ -2,6 +2,7 @@
 *.DS_Store
 
 # webstorm project files
+.idea
 .idea/workspace.xml
 .idea/modules.xml
 .idea/*.iml

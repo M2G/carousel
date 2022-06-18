@@ -5,6 +5,7 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   extends: [
     "airbnb-base",
+    "airbnb-typescript/base",
     "./node_modules/eslint-config-airbnb-base/rules/best-practices.js",
     "./node_modules/eslint-config-airbnb-base/rules/errors.js",
     "./node_modules/eslint-config-airbnb-base/rules/node.js",
@@ -23,13 +24,12 @@ module.exports = {
   parserOptions: {
     project: path.resolve(__dirname, './tsconfig.json'),
     tsconfigRootDir: __dirname,
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module',
     extraFileExtensions: [".scss"]
   },
-  plugins: ["@typescript-eslint", "jest", "prettier"],
+  plugins: ["@typescript-eslint", "jest", "prettier", "import"],
   rules: {
-    "no-redeclare": 0,
     "no-return-assign": 0,
     "no-restricted-syntax": 0,
     "no-cond-assign": 0,
@@ -44,30 +44,25 @@ module.exports = {
     "multiline-ternary": 0,
     "init-declarations": 0,
     "func-style": 0,
-    "class-methods-use-this": 1,
-
+    "camelcase": 1,
     "max-statements": 0,
     "max-lines": 0,
     "max-lines-per-function": 0,
-    "function-call-argument-newline": 0,
-
     "sort-imports": 0,
     "implicit-arrow-linebreak": 0,
-
-    "import/extensions": "off",
+    "import/no-cycle": 1,
+    "import/extensions": 0,
     "import/no-unresolved": 0,
     "import/prefer-default-export": 0,
-
-    "lines-between-class-members": "off",
-
-    "@typescript-eslint/no-type-alias": 1,
-    "@typescript-eslint/no-unsafe-call": 1,
-    "@typescript-eslint/member-ordering": 1,
-    "@typescript-eslint/no-unsafe-assignment": 1,
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/no-namespace": "off",
-    "@typescript-eslint/no-for-in-array": "warn",
+    "lines-between-class-members": 0,
+    "multiline-comment-style": 0,
+    "@typescript-eslint/ban-types": 1,
+    "@typescript-eslint/object-curly-spacing": 0,
+    "@typescript-eslint/no-unsafe-return": 1,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-unused-vars": 0,
+    "@typescript-eslint/no-namespace": 0,
+    "@typescript-eslint/no-for-in-array": 1,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/ban-ts-ignore": 0,
     "@typescript-eslint/indent": 0,
@@ -78,31 +73,28 @@ module.exports = {
     "@typescript-eslint/quotes": 0,
     "@typescript-eslint/restrict-template-expressions": 0,
     "@typescript-eslint/unbound-method": 1,
-    "@typescript-eslint/typedef": 1,
-    "@typescript-eslint/prefer-readonly-parameter-types": 1,
-    "@typescript-eslint/explicit-module-boundary-types": 1,
-    "typescript-eslint/ban-ts-comment": 0,
-    "@typescript-eslint/consistent-type-imports": 1,
-    "@typescript-eslint/object-curly-spacing": 1
+    "@typescript-eslint/no-unsafe-assignment": 1,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-unsafe-member-access": 1,
+    "@typescript-eslint/no-unsafe-call": 1
   },
   settings: {
     "html/html-extensions": [".html"],
-    react:  {
-      version: "detect"
-    },
     "import/parsers": {
       "@typescript-eslint/parser": [".ts"]
     },
-    "import/resolver": {
+    'import/resolver': {
       node: {
-        extensions: [".js", ".ts"]
-      }
-    }
+        paths: ["src"],
+        extensions: ['.js', '.ts'],
+        moduleDirectory: ['node_modules', 'src'],
+      },
+    },
   },
   env: {
     browser: true,
-    jasmine: true,
     jest: true,
+    jasmine: true,
     node: true
   }
 };
