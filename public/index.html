@@ -57,7 +57,8 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit
           </h2>
               <div class="c-dossier__carousel__items">
-                <div class="c-dossier__carousel__item">
+                <div class="c-dossier__carousel__item" id="carousel__slide1"
+                     tabindex="0">
                   <h3 class="c-dossier__carousel__item__title">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit
               </h3>
@@ -85,7 +86,8 @@
                       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                   </div>
-                  <div class="c-dossier__carousel__item">
+                  <div class="c-dossier__carousel__item" id="carousel__slide2"
+                       tabindex="0">
                     <h3 class="c-dossier__carousel__item__title">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit
                     </h3>
@@ -138,8 +140,8 @@
                     <span>Précedent</span>
                   </button>
                   <div class="c-dossier__carousel__nav__items">
-                    <i class="c-dossier__carousel__nav__item" data-dossier-navigation-item="1"></i>
-                    <i class="c-dossier__carousel__nav__item" data-dossier-navigation-item="2"></i>
+                    <a class="c-dossier__carousel__nav__item" href="#carousel__slide1" data-dossier-navigation-item="1"></a>
+                    <a class="c-dossier__carousel__nav__item" href="#carousel__slide2" data-dossier-navigation-item="2"></a>
                   </div>
                   <button class="c-dossier__carousel__nav__button" data-dossier-carousel-nav="next">
                     <span>Suivant</span>
@@ -152,13 +154,13 @@
           </section>
           <section class="c-dossier__section">
             <nav class="c-dossier__navigation" data-dossier-navigation>
-              <a class="c-dossier__navigation__item" href="#" data-dossier-navigation-item="intro">
+              <a class="c-dossier__navigation__item" data-dossier-navigation-item="intro">
             <h3>Sommaire</h3>
           </a>
-              <a class="c-dossier__navigation__item" href="#" data-dossier-navigation-item="1">
+              <a class="c-dossier__navigation__item" href="#carousel__slide1" data-dossier-navigation-item="1">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit
           </a>
-              <a class="c-dossier__navigation__item" href="#" data-dossier-navigation-item="2">
+              <a class="c-dossier__navigation__item" href="#carousel__slide2" data-dossier-navigation-item="2">
             Connectez-vous afin de lire plus...
           </a>
             </nav>

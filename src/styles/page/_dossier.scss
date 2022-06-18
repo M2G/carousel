@@ -1,3 +1,49 @@
+@keyframes tonext {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: 100%;
+  }
+  98% {
+    left: 100%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes tostart {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: -300%;
+  }
+  98% {
+    left: -300%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes snap {
+  96% {
+    scroll-snap-align: center;
+  }
+  97% {
+    scroll-snap-align: none;
+  }
+  99% {
+    scroll-snap-align: none;
+  }
+  100% {
+    scroll-snap-align: center;
+  }
+}
+
+
 $dossier_height: 1400px;
 $dossier_padding: 20px;
 
@@ -135,6 +181,8 @@ $dossier_padding: 20px;
     list-style: none;
 
     border-top: 1px solid $_color-grey;
+
+
   }
 
   &__item {
@@ -524,3 +572,31 @@ $dossier_padding: 20px;
     }
   }
 }
+
+.c-dossier__carousel {
+  position: relative;
+  perspective: 100px;
+}
+
+
+.c-dossier__carousel__items {
+  display: flex;
+  overflow-x: scroll;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+
+.c-dossier__carousel__item {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  counter-increment: item;
+
+  &:before {
+    content: counter(item);
+    transform: translate3d(-50%,-40%,70px);
+  }
+}
+

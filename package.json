@@ -18,15 +18,18 @@
     "lint": "eslint --ext .js,.ts .",
     "lint:fix": "eslint --fix --ext .js,.ts, .; exit 0",
     "test:e2e": "node_modules/.bin/nightwatch -c ./tests/e2e/nightwatch.conf.js --env chrome",
-    "test": "jest --env=jsdom",
+    "test": "jest --env=jsdom --passWithNoTests",
     "test:watch": "jest --watch",
-    "start:dev": "NODE_ENV=development webpack-dev-server --config ./config/development/webpack.config.js --mode development",
-    "start:staging": "NODE_ENV=staging webpack-dev-server --config ./config/staging/webpack.config.js --mode staging",
-    "start:prod": "NODE_ENV=production webpack-dev-server --config ./config/development/webpack.config.js --mode production",
+    "start:dev": "PORT=9001 NODE_ENV=development webpack serve --config ./config/development/webpack.config.js --mode development",
+    "start:staging": "NODE_ENV=staging webpack serve --config ./config/staging/webpack.config.js --mode staging",
+    "start:prod": "NODE_ENV=production webpack serve --config ./config/development/webpack.config.js --mode production",
     "build:dev": "NODE_ENV=development webpack --mode development --config ./config/development/webpack.config.js --progress --watch",
     "build:staging": "NODE_ENV=staging webpack --mode staging --config ./config/staging/webpack.config.js --progress",
     "build:production": "NODE_ENV=production webpack --mode production --config ./config/production/webpack.config.js --progress",
-    "publish:npm": "rm -rf ./build && NODE_ENV=production webpack --mode production --config ./config/publish/webpack.config.js --progress"
+    "publish:npm": "rm -rf ./build && NODE_ENV=production webpack --mode production --config ./config/publish/webpack.config.js --progress",
+    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 9006 --no-manager-cache",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "6.5.0-alpha.40",

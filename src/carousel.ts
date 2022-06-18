@@ -2,8 +2,8 @@
 import Component from './component';
 
 const visibleClass = 'is-hidden';
-const previous = 'prev';
-const next = 'next';
+// const previous = 'prev';
+// const next = 'next';
 
 const defaults = {
   currentslide: 0,
@@ -12,7 +12,7 @@ const defaults = {
 class Carousel extends Component {
   private readonly carousel: any;
 
-  private readonly nav: any;
+  // private readonly nav: any;
 
   private readonly intro: Element | null;
 
@@ -22,7 +22,7 @@ class Carousel extends Component {
 
   private readonly introBtn: Element | null | undefined;
 
-  private readonly slidecount: number;
+ // private readonly slidecount: number;
 
   public constructor(elem, params) {
     super(Carousel, elem, params);
@@ -34,18 +34,18 @@ class Carousel extends Component {
     this.carousel = this.elem?.querySelector('[data-dossier-carousel]');
     this.intro = this.elem?.querySelector('[data-dossier-intro]');
     this.introBtn = this.intro?.querySelector('.c-btn');
-    this.nav = this.elem?.querySelector('[data-dossier-navigation]');
-    this.slidecount = this.carousel?.querySelectorAll('.c-dossier__carousel__item')?.length;
+    // this.nav = this.elem?.querySelector('[data-dossier-navigation]');
+    // this.slidecount = this.carousel?.querySelectorAll('.c-dossier__carousel__item')?.length;
 
     // intro
     this.introBtn?.addEventListener('click', (): void => {
         this.hideIntro();
-        this.changeSlide(this.currentslide);
+        // this.changeSlide(this.currentslide);
         this.showCarousel();
     });
 
     // nav
-    this.nav.addEventListener('click', ({ target }) => {
+   /* this.nav.addEventListener('click', ({ target }) => {
       if (target.matches('[data-dossier-navigation-item]')) {
         this.handleDossierNavClick(target);
       }
@@ -56,9 +56,9 @@ class Carousel extends Component {
       if (target.matches('[data-dossier-navigation-item]')) {
         this.handleDossierNavClick(target);
       }
-    });
+    });*/
 
-    // @ts-expect-error
+    /*
     this.carousel.addEventListener('click', ({ target, target: { dataset } }: { matches: () => {} }) => {
       if (target.matches('[data-dossier-carousel-nav]')) {
         const direction = dataset?.dossierCarouselNav;
@@ -72,7 +72,7 @@ class Carousel extends Component {
          this.showIntro();
         }
       }
-    });
+    });*/
   }
 
   static get defaults() {
@@ -91,7 +91,7 @@ class Carousel extends Component {
     this.currentslide = currentslide;
   }
 
-  private handleDossierNavClick({ dataset }): void {
+  /*private handleDossierNavClick({ dataset }): void {
     const goTo = dataset?.dossierNavigationItem;
     if (goTo === 'intro') {
       this.showIntro();
@@ -102,9 +102,9 @@ class Carousel extends Component {
       this.showCarousel();
       this.changeSlide(Number(goTo) - 1);
     }
-  }
+  }*/
 
-  private changeSlide(slideNumber: number): void {
+ /* private changeSlide(slideNumber: number): void {
     const translate = slideNumber * 100;
     this.carousel.querySelector('.c-dossier__carousel__items').style.transform = `translateX(-${translate}%)`;
     this.setCurrentSlide(slideNumber);
@@ -117,8 +117,8 @@ class Carousel extends Component {
     } else {
       this.enableButtons();
     }
-  }
-
+  }*/
+/*
   private disableButton(button): void {
     button?.setAttribute('disabled', '');
   }
@@ -140,7 +140,7 @@ class Carousel extends Component {
   private showIntro(): void {
     this.intro?.classList.remove(visibleClass);
   }
-
+*/
   private hideIntro(): void {
     this.intro?.classList.add(visibleClass);
   }
@@ -148,10 +148,10 @@ class Carousel extends Component {
   private showCarousel(): void {
     this.carousel?.classList.remove(visibleClass);
   }
-
+/*
   private hideCarousel(): void {
     this.carousel?.classList.add(visibleClass);
-  }
+  }*/
 }
 
 export default Carousel;
