@@ -573,11 +573,17 @@ $dossier_padding: 20px;
   }
 }
 
+.c-dossier__carousel__nav {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: -70px;
+}
+
 .c-dossier__carousel {
   position: relative;
   perspective: 100px;
 }
-
 
 .c-dossier__carousel__items {
   display: flex;
@@ -587,12 +593,12 @@ $dossier_padding: 20px;
   scroll-snap-type: x mandatory;
 }
 
-
 .c-dossier__carousel__item {
   position: relative;
-  flex: 0 0 100%;
+  // flex: 0 0 100%;
   width: 100%;
   counter-increment: item;
+  margin-bottom: 80px;
 
   &:before {
     content: counter(item);
