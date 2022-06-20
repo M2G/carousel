@@ -575,9 +575,9 @@ $dossier_padding: 20px;
 
 .c-dossier__carousel__nav {
   position: absolute;
-  left: 0;
   width: 100%;
-  bottom: -70px;
+  left: 0;
+  top: 100%;
 }
 
 .c-dossier__carousel {
@@ -606,3 +606,16 @@ $dossier_padding: 20px;
   }
 }
 
+* {
+  box-sizing: border-box;
+  scrollbar-color: transparent transparent; /* thumb and track color */
+  scrollbar-width: 0px;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
