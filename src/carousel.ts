@@ -34,7 +34,7 @@ class Carousel extends Component {
     this.carousel = this.elem?.querySelector('[data-dossier-carousel]');
     this.intro = this.elem?.querySelector('[data-dossier-intro]');
     this.introBtn = this.intro?.querySelector('.c-btn');
-    // this.nav = this.elem?.querySelector('[data-dossier-navigation]');
+    //this.nav = this.elem?.querySelector('[data-dossier-navigation]');
     // this.slidecount = this.carousel?.querySelectorAll('.c-dossier__carousel__item')?.length;
 
     // intro
