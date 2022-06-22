@@ -429,6 +429,13 @@ $dossier_padding: 20px;
         span {
           background-color: $_color_grey;
         }
+
+        &:hover,
+        &:active,
+        &:focus,
+        &:target {
+          border: none;
+        }
       }
 
       &:focus {
@@ -553,11 +560,6 @@ $dossier_padding: 20px;
   width: 100%;
   counter-increment: item;
   margin-bottom: 80px;
-
-  &:before {
-    content: counter(item);
-    transform: translate3d(-50%,-40%,70px);
-  }
 }
 
 * {
@@ -585,4 +587,12 @@ a.c-dossier__carousel__nav__button:active, a.c-dossier__carousel__nav__button:fo
 
 a.c-dossier__carousel__nav__button:target {
   border-bottom: 2px solid $_color_brand;
+}
+
+.c-dossier__navigation__item:hover,
+a.c-dossier__carousel__nav__button:focus,
+a.c-dossier__carousel__nav__button:active,
+a.c-dossier__carousel__nav__button:target,
+{
+  font-weight: bold;
 }
