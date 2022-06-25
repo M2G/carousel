@@ -10,6 +10,7 @@ class Carousel extends Component {
   private readonly intro: Element | null;
   private readonly introBtn: Element | null | undefined;
   private readonly navIntro: Element | null;
+  private readonly navItemIntro: Element | null;
 
   public constructor(elem, params) {
     super(Carousel, elem, params);
@@ -18,14 +19,19 @@ class Carousel extends Component {
     this.intro = this.elem?.querySelector('[data-dossier-intro]');
     this.introBtn = this.intro?.querySelector('.c-btn');
     this.navIntro = this.elem?.querySelector('[data-dossier-navigation-intro]');
-
+    this.navItemIntro = this.elem?.querySelector('[data-dossier-navigation-item-intro]');
 
     this.introBtn?.addEventListener('click', (): void => {
-        this.hideIntro();
-        this.showCarousel();
+      this.hideIntro();
+      this.showCarousel();
     });
 
     this.navIntro?.addEventListener('click', (): void => {
+      this.hideCarousel();
+      this.showIntro();
+    });
+
+    this.navItemIntro?.addEventListener('click', (): void => {
       this.hideCarousel();
       this.showIntro();
     });
@@ -54,7 +60,6 @@ class Carousel extends Component {
   private showCarousel(): void {
     this.carousel?.classList.remove(visibleClass);
   }
-
 }
 
 export default Carousel;

@@ -576,16 +576,10 @@ $dossier_padding: 20px;
   background: transparent;
 }
 
-
-.c-dossier__carousel__nav__button:hover{
-  border-bottom: 2px solid $_color_brand;
-}
-
-a.c-dossier__carousel__nav__button:active, a.c-dossier__carousel__nav__button:focus {
-  border-bottom: 2px solid $_color_brand;
-}
-
-a.c-dossier__carousel__nav__button:target {
+a.c-dossier__carousel__nav__button:target,
+.c-dossier__carousel__nav__button:hover,
+a.c-dossier__carousel__nav__button:active,
+a.c-dossier__carousel__nav__button:focus {
   border-bottom: 2px solid $_color_brand;
 }
 
@@ -593,6 +587,14 @@ a.c-dossier__carousel__nav__button:target {
 a.c-dossier__carousel__nav__button:focus,
 a.c-dossier__carousel__nav__button:active,
 a.c-dossier__carousel__nav__button:target,
+{
+  font-weight: bold;
+}
+
+.c-dossier__navigation__item:hover,
+a.c-dossier__navigation__item:focus,
+a.c-dossier__navigation__item:active,
+a.c-dossier__navigation__item:target,
 {
   font-weight: bold;
 }
