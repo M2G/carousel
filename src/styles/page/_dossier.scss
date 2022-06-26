@@ -1,8 +1,28 @@
 // see: https://stackoverflow.com/questions/55590992/border-bottom-for-anchor-tag-on-click-css
 // see: https://css-tricks.com/css-only-carousel
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+
 $dossier_height: 1400px;
 $dossier_padding: 20px;
+
+* {
+  box-sizing: border-box;
+  scrollbar-color: transparent transparent; /* thumb and track color */
+  scrollbar-width: 0px;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
 
 .o-page--dossier {
   &__background {
@@ -537,13 +557,6 @@ $dossier_padding: 20px;
   }
 }
 
-.c-dossier__carousel__nav {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 100%;
-}
-
 .c-dossier__carousel {
   position: relative;
   perspective: 100px;
@@ -563,20 +576,6 @@ $dossier_padding: 20px;
   width: 100%;
   counter-increment: item;
   margin-bottom: 80px;
-}
-
-* {
-  box-sizing: border-box;
-  scrollbar-color: transparent transparent; /* thumb and track color */
-  scrollbar-width: 0px;
-}
-
-*::-webkit-scrollbar {
-  width: 0;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
 }
 
 a.c-dossier__carousel__nav__button:target,
@@ -601,3 +600,74 @@ a.c-dossier__navigation__item:target,
 {
   font-weight: bold;
 }
+
+
+.c-dossier__carousel__nav__items {
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  inline-size: max-content;
+
+
+  /* DRY: set here the gap between the dots,
+   * we will need it later to set the position
+   * of the nav::before pseudoelement
+   */
+  --gap: .8rem;
+  gap: var(--gap, .5rem);
+}
+
+  .c-dossier__carousel__nav__items::before,
+  .c-dossier__carousel__nav__items a {
+    inline-size: 1rem;
+    aspect-ratio: 1;
+    background-color: $_color-brand;
+  }
+
+  .c-dossier__carousel__nav__items a {
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: $_color-grey;
+    width: 10px;
+    height: 10px;
+  }
+
+
+  .c-dossier__carousel__nav__items::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    display: block;
+    cursor: not-allowed;
+
+
+    /* here we use the above --gap variable.
+     * the --slide variable is set in the
+     * keyframes below.
+     */
+    transform: translateX(
+        calc((100% + var(--gap, .5rem)) *
+        calc(var(--slide, 1) - 1))
+    );
+    animation: dot 1s steps(1, end) forwards;
+    /* shhh... here is the magic */
+    animation-timeline: slide;
+  }
+
+
+  /* timeline animation */
+  @scroll-timeline slide {
+    source: selector(#carousel__slide);
+    orientation: inline;
+    time-range: 1s;
+  }
+
+  @keyframes dot {
+    0%    { --slide: 1; }
+    12.5% { --slide: 2; }
+    37.5% { --slide: 3; }
+    62.5% { --slide: 4; }
+    87.5%, 100% { --slide: 5; }
+  }
+
