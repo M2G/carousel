@@ -499,7 +499,6 @@ $dossier_padding: 20px;
 
       width: 10px;
       height: 10px;
-      margin: 0 4px;
 
       cursor: pointer;
       transition: background-color 300ms ease;
@@ -622,6 +621,8 @@ a.c-dossier__navigation__item:target,
     inline-size: 1rem;
     aspect-ratio: 1;
     background-color: $_color-brand;
+    width: 10px;
+    height: 10px;
   }
 
   .c-dossier__carousel__nav__items a {
