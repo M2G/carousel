@@ -578,17 +578,10 @@ $dossier_padding: 20px;
 }
 
 a.c-dossier__carousel__nav__button:target,
-.c-dossier__carousel__nav__button:hover,
+a.c-dossier__carousel__nav__button:hover,
 a.c-dossier__carousel__nav__button:active,
 a.c-dossier__carousel__nav__button:focus {
   border-bottom: 2px solid $_color_brand;
-}
-
-.c-dossier__navigation__item:hover,
-a.c-dossier__carousel__nav__button:focus,
-a.c-dossier__carousel__nav__button:active,
-a.c-dossier__carousel__nav__button:target,
-{
   font-weight: bold;
 }
 
