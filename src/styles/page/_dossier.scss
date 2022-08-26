@@ -557,6 +557,9 @@ $dossier_padding: 20px;
 }
 
 .c-dossier__carousel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   position: relative;
   perspective: 100px;
 }
