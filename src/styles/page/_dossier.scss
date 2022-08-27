@@ -655,7 +655,7 @@ a.c-dossier__navigation__item:target,
 
   /* timeline animation */
   @scroll-timeline slide {
-    source: selector(#carousel__slide);
+    source: selector(#slide);
     orientation: inline;
     time-range: 1s;
   }

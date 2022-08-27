@@ -3,6 +3,8 @@ import Component from './component';
 
 const visibleClass = 'is-hidden';
 
+const CLICK = 'click';
+
 const defaults = {};
 
 class Carousel extends Component {
@@ -10,7 +12,6 @@ class Carousel extends Component {
   private readonly intro: Element | null;
   private readonly introBtn: Element | null | undefined;
   private readonly navIntro: Element | null;
-  private readonly navItemIntro: Element | null;
 
   public constructor(elem, params) {
     super(Carousel, elem, params);
@@ -19,19 +20,35 @@ class Carousel extends Component {
     this.intro = this.elem?.querySelector('[data-dossier-intro]');
     this.introBtn = this.intro?.querySelector('.c-btn');
     this.navIntro = this.elem?.querySelector('[data-dossier-navigation-intro]');
-    this.navItemIntro = this.elem?.querySelector('[data-dossier-navigation-item-intro]');
 
-    this.introBtn?.addEventListener('click', (): void => {
+    const items = this.carousel?.querySelector('.c-dossier__carousel__items').children;
+    const nav = this.carousel?.querySelector('.c-dossier__carousel__nav').children;
+
+    const prevButton = nav?.[0];
+    const nextButton = nav?.[2];
+
+    let counter = 1;
+
+    prevButton?.addEventListener(CLICK, (): void => {
+      if (counter === 1) return;
+      counter -= 1;
+      prevButton?.setAttribute('href', `#slide${counter}`);
+      nextButton?.setAttribute('href', `#slide${counter - 1}`);
+    });
+
+    nextButton?.addEventListener(CLICK, (): void => {
+      if (items.length === counter) return;
+      counter += 1;
+      nextButton?.setAttribute('href', `#slide${counter - 1}`);
+      nextButton?.setAttribute('href', `#slide${counter}`);
+    });
+
+    this.introBtn?.addEventListener(CLICK, (): void => {
       this.hideIntro();
       this.showCarousel();
     });
 
-    this.navIntro?.addEventListener('click', (): void => {
-      this.hideCarousel();
-      this.showIntro();
-    });
-
-    this.navItemIntro?.addEventListener('click', (): void => {
+    this.navIntro?.addEventListener(CLICK, (): void => {
       this.hideCarousel();
       this.showIntro();
     });
