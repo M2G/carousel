@@ -10,17 +10,14 @@ const defaults = {};
 class Carousel extends Component {
   private readonly carousel: any;
   private readonly intro: Element | null;
-  private readonly introBtn: Element | null | undefined;
-  private readonly navIntro: Element | null;
 
   public constructor(elem, params) {
     super(Carousel, elem, params);
 
     this.carousel = this.elem?.querySelector('[data-dossier-carousel]');
     this.intro = this.elem?.querySelector('[data-dossier-intro]');
-    this.introBtn = this.intro?.querySelector('.c-btn');
-    this.navIntro = this.elem?.querySelector('[data-dossier-navigation-intro]');
-
+    const introBtn = this.intro?.querySelector('.c-btn');
+    const navIntro = this.elem?.querySelector('[data-dossier-navigation-intro]');
     const items = this.carousel?.querySelector('.c-dossier__carousel__items').children;
     const nav = this.carousel?.querySelector('.c-dossier__carousel__nav').children;
 
@@ -43,12 +40,12 @@ class Carousel extends Component {
       nextButton?.setAttribute('href', `#slide${counter}`);
     });
 
-    this.introBtn?.addEventListener(CLICK, (): void => {
+    introBtn?.addEventListener(CLICK, (): void => {
       this.hideIntro();
       this.showCarousel();
     });
 
-    this.navIntro?.addEventListener(CLICK, (): void => {
+    navIntro?.addEventListener(CLICK, (): void => {
       this.hideCarousel();
       this.showIntro();
     });
