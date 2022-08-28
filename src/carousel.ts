@@ -22,21 +22,27 @@ class Carousel extends Component {
     const prevButton = this.carousel?.querySelector('[data-prev]');
     const nextButton = this.carousel?.querySelector('[data-next]');
 
-    let counter = 1;
+    prevButton?.addEventListener(
+      CLICK,
+      (e): void => {
+        let n = e.target.href.slice(-1) * 1 - 1;
+        console.log('n', n);
+        console.log('nextButton', nextButton.href);
+        if (n === -1) n = 0;
+        e.target.href = e.target.href.slice(0, -1) + n;
+      },
+      false
+    );
 
-    prevButton?.addEventListener(CLICK, (): void => {
-      if (counter === 1) return;
-      counter -= 1;
-      prevButton?.setAttribute('href', `#slide${counter}`);
-      nextButton?.setAttribute('href', `#slide${counter - 1}`);
-    });
-
-    nextButton?.addEventListener(CLICK, (): void => {
-      if (items.length === counter) return;
-      counter += 1;
-      nextButton?.setAttribute('href', `#slide${counter - 1}`);
-      nextButton?.setAttribute('href', `#slide${counter}`);
-    });
+    nextButton?.addEventListener(
+      CLICK,
+      (e): void => {
+        let n = e.target.href.slice(-1) * 1 + 1;
+        if (n > items.length) n = items.length;
+        e.target.href = e.target.href.slice(0, -1) + n;
+      },
+      false
+    );
 
     introBtn?.addEventListener(CLICK, (): void => {
       this.hideIntro();
