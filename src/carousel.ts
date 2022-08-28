@@ -19,10 +19,8 @@ class Carousel extends Component {
     const introBtn = this.intro?.querySelector('.c-btn');
     const navIntro = this.elem?.querySelector('[data-dossier-navigation-intro]');
     const items = this.carousel?.querySelector('.c-dossier__carousel__items').children;
-    const nav = this.carousel?.querySelector('.c-dossier__carousel__nav').children;
-
-    const prevButton = nav?.[0];
-    const nextButton = nav?.[2];
+    const prevButton = this.carousel?.querySelector('[data-prev]');
+    const nextButton = this.carousel?.querySelector('[data-next]');
 
     let counter = 1;
 
