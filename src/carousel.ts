@@ -26,8 +26,9 @@ class Carousel extends Component {
       CLICK,
       (e): void => {
         let n = e.target.href.slice(-1) * 1 - 1;
+        if (n === 0) return;
         nextButton.href = e.target.href.slice(0, -1) + n;
-        if (n < items.length) e.target.href = e.target.href.slice(0, -1) + n;
+        e.target.href = e.target.href.slice(0, -1) + n;
       },
       false
     );
@@ -36,8 +37,8 @@ class Carousel extends Component {
       CLICK,
       (e): void => {
         let n = e.target.href.slice(-1) * 1 + 1;
+        if (n > items.length) return;
         prevButton.href = e.target.href.slice(0, -1) + n;
-        if (n > items.length) n = items.length;
         e.target.href = e.target.href.slice(0, -1) + n;
       },
       false
