@@ -18,9 +18,19 @@ class Carousel extends Component {
     this.intro = this.elem?.querySelector('[data-dossier-intro]');
     const introBtn = this.intro?.querySelector('.c-btn');
     const navIntro = this.elem?.querySelector('[data-dossier-navigation-intro]');
+    const sommaryButton = this.elem?.querySelector('.c-dossier__navigation__item');
     const items = this.carousel?.querySelector('.c-dossier__carousel__items').children;
     const prevButton = this.carousel?.querySelector('[data-prev]');
     const nextButton = this.carousel?.querySelector('[data-next]');
+
+    sommaryButton?.addEventListener(
+      CLICK,
+      (): void => {
+        this.hideCarousel();
+        this.showIntro();
+      },
+      false
+    );
 
     prevButton?.addEventListener(
       CLICK,
@@ -44,15 +54,23 @@ class Carousel extends Component {
       false
     );
 
-    introBtn?.addEventListener(CLICK, (): void => {
-      this.hideIntro();
-      this.showCarousel();
-    });
+    introBtn?.addEventListener(
+      CLICK,
+      (): void => {
+        this.hideIntro();
+        this.showCarousel();
+      },
+      false
+    );
 
-    navIntro?.addEventListener(CLICK, (): void => {
-      this.hideCarousel();
-      this.showIntro();
-    });
+    navIntro?.addEventListener(
+      CLICK,
+      (): void => {
+        this.hideCarousel();
+        this.showIntro();
+      },
+      false
+    );
   }
 
   static get defaults() {
