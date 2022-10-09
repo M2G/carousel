@@ -31,10 +31,11 @@ $dossier_padding: 20px;
     }
     @include bp_height(0px, $dossier_height + $_component_height_header) {
       @include bp(0px, small) {
-        min-height: calc(100vh - 115px);
+        //min-height: calc(100vh - 115px);
       }
 
-      min-height: calc(100vh - #{$_component_height_header});
+      //min-height: calc(100vh - #{$_component_height_header});
+      min-height: 100vh;
     }
 
     position: relative;
@@ -328,12 +329,13 @@ $dossier_padding: 20px;
 .c-dossier__intro {
   @include bp_height(0px, $dossier_height + $_component_height_header) {
     @include bp(0px, small) {
-      max-height: calc(100vh - 115px);
+      // max-height: calc(100vh - 115px);
     }
 
     overflow: auto;
 
-    max-height: calc(100vh - #{$_component_height_header});
+    // max-height: calc(100vh - #{$_component_height_header});
+    max-height: 100vh;
   }
 
   position: absolute;
@@ -381,15 +383,17 @@ $dossier_padding: 20px;
 
   @include bp_height(0px, $dossier_height + $_component_height_header) {
     @include bp(0px, small) {
-      max-height: calc(100vh - #{$mobile_carousel_max_height});
+      //  max-height: calc(100vh - #{$mobile_carousel_max_height});
     }
 
-    max-height: calc(100vh - #{$tablet_carousel_max_height});
+    // max-height: calc(100vh - #{$tablet_carousel_max_height});
+
   }
 
   overflow: hidden;
 
-  max-height: calc(#{$dossier_height} - #{$dossier_padding});
+  // max-height: calc(#{$dossier_height} - #{$dossier_padding});
+  max-height: 100vh;
 
   transition: opacity 300ms ease 300ms, transform 300ms ease 300ms;
   transform: scale(100%);
@@ -520,7 +524,9 @@ $dossier_padding: 20px;
   &__item {
     flex: 1 0 100%;
 
-    height: 100%;
+    // height: 100%;
+    height: 100vh;
+
     padding: $dossier_padding;
     padding-top: 0;
 
@@ -532,22 +538,23 @@ $dossier_padding: 20px;
     }
 
     &__body {
+
       $table_carousel_body_max_height: $carousel_body_max_height +
         $_component_height_header;
-      $mobile_carousel_body_max_height: ($carousel_body_max_height + 115px) -
-        $dossier_padding;
+      $mobile_carousel_body_max_height: ($carousel_body_max_height + 115px) - $dossier_padding;
 
       @include bp_height(0px, $dossier_height + $_component_height_header) {
         @include bp(0px, small) {
-          max-height: calc(100vh - #{$mobile_carousel_body_max_height});
+          // max-height: calc(100vh - #{$mobile_carousel_body_max_height});
         }
 
-        max-height: calc(100vh - #{$table_carousel_body_max_height});
+       // max-height: calc(100vh - #{$table_carousel_body_max_height});
       }
+
 
       overflow-y: auto;
 
-      max-height: calc(#{$dossier_height} - #{$carousel_body_max_height});
+      // max-height: calc(#{$dossier_height} - #{$carousel_body_max_height});
 
       img {
         width: 100%;
