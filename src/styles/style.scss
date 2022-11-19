@@ -48,8 +48,13 @@
 // ==========================================================================
 @import './page/dossier';
 
+html {
+  height: 100%;
+}
+
 body {
   overflow: hidden;
+  min-height: 100%;
 }
 
 .icon {
