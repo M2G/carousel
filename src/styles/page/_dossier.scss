@@ -6,7 +6,6 @@ html {
   scroll-padding-top: 4rem;
 }
 
-
 $dossier_height: 1400px;
 $dossier_padding: 20px;
 
@@ -159,8 +158,6 @@ $dossier_padding: 20px;
     list-style: none;
 
     border-top: 1px solid $_color-grey;
-
-
   }
 
   &__item {
@@ -387,7 +384,6 @@ $dossier_padding: 20px;
     }
 
     // max-height: calc(100vh - #{$tablet_carousel_max_height});
-
   }
 
   overflow: hidden;
@@ -425,11 +421,8 @@ $dossier_padding: 20px;
 
   &__nav {
     display: flex;
-
-    height: $carousel_nav_height;
-    padding: $dossier_padding 0;
-
     justify-content: space-between;
+    margin-bottom: 25px;
 
     &__button {
       font-family: $_base-font-family-headings;
@@ -525,9 +518,10 @@ $dossier_padding: 20px;
     flex: 1 0 100%;
 
     // height: 100%;
-    height: 100vh;
 
-    padding: $dossier_padding;
+    padding-left: $dossier_padding;
+    padding-right: $dossier_padding;
+    padding-bottom: $dossier_padding;
     padding-top: 0;
 
     color: $_color-grey-dark;
@@ -538,9 +532,7 @@ $dossier_padding: 20px;
     }
 
     &__body {
-
-      $table_carousel_body_max_height: $carousel_body_max_height +
-        $_component_height_header;
+      $table_carousel_body_max_height: $carousel_body_max_height + $_component_height_header;
       $mobile_carousel_body_max_height: ($carousel_body_max_height + 115px) - $dossier_padding;
 
       @include bp_height(0px, $dossier_height + $_component_height_header) {
@@ -548,9 +540,8 @@ $dossier_padding: 20px;
           // max-height: calc(100vh - #{$mobile_carousel_body_max_height});
         }
 
-       // max-height: calc(100vh - #{$table_carousel_body_max_height});
+        // max-height: calc(100vh - #{$table_carousel_body_max_height});
       }
-
 
       overflow-y: auto;
 
@@ -566,112 +557,108 @@ $dossier_padding: 20px;
 .c-dossier__carousel {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  // height: 100%;
+  height: 100vh;
   position: relative;
   perspective: 100px;
-}
 
-.c-dossier__carousel__items {
-  display: flex;
-  overflow-x: scroll;
-  counter-reset: item;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-}
-
-.c-dossier__carousel__item {
-  position: relative;
-  // flex: 0 0 100%;
-  width: 100%;
-  counter-increment: item;
-  margin-bottom: 80px;
-}
-
-a.c-dossier__carousel__nav__button:target,
-a.c-dossier__carousel__nav__button:hover,
-a.c-dossier__carousel__nav__button:active,
-a.c-dossier__carousel__nav__button:focus {
-  border-bottom: 2px solid $_color_brand;
-  font-weight: bold;
-}
-
-.c-dossier__navigation__item:hover,
-a.c-dossier__navigation__item:focus,
-a.c-dossier__navigation__item:active,
-a.c-dossier__navigation__item:target,
-{
-  font-weight: bold;
-}
-
-
-.c-dossier__carousel__nav__items {
-  position: relative;
-  display: flex;
-  margin: 0 auto;
-  inline-size: max-content;
-
-
-  /* DRY: set here the gap between the dots,
-   * we will need it later to set the position
-   * of the nav::before pseudoelement
-   */
-  --gap: .8rem;
-  gap: var(--gap, .5rem);
-}
-
-  .c-dossier__carousel__nav__items::before,
-  .c-dossier__carousel__nav__items a {
-    inline-size: 1rem;
-    aspect-ratio: 1;
-    background-color: $_color-brand;
-    width: 10px;
-    height: 10px;
+  &__items {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    counter-reset: item;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    height: 100%;
   }
 
-  .c-dossier__carousel__nav__items a {
-    text-indent: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    background-color: $_color-grey;
-    width: 10px;
-    height: 10px;
+  &__item {
+    position: relative;
+    // flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    counter-increment: item;
   }
 
+  &__nav {
+    &__button:target,
+    .c-dossier__carousel__nav__button:hover,
+    .c-dossier__carousel__nav__button:active,
+    .c-dossier__carousel__nav__button:focus {
+      border-bottom: 2px solid $_color_brand;
+      font-weight: bold;
+    }
 
-  .c-dossier__carousel__nav__items::before {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    display: block;
-    cursor: not-allowed;
+    &__items {
+      position: relative;
+      display: flex;
+      margin: 0 auto;
+      inline-size: max-content;
 
+      /* DRY: set here the gap between the dots,
+       * we will need it later to set the position
+       * of the nav::before pseudoelement
+       */
+      --gap: 0.8rem;
+      gap: var(--gap, 0.5rem);
 
-    /* here we use the above --gap variable.
-     * the --slide variable is set in the
-     * keyframes below.
-     */
-    transform: translateX(
-        calc((100% + var(--gap, .5rem)) *
-        calc(var(--slide, 1) - 1))
-    );
-    animation: dot 1s steps(1, end) forwards;
-    /* shhh... here is the magic */
-    animation-timeline: slide;
+      &::before {
+        inline-size: 1rem;
+        aspect-ratio: 1;
+        background-color: $_color-brand;
+        width: 10px;
+        height: 10px;
+
+        content: '';
+        position: absolute;
+        z-index: 1;
+        display: block;
+        cursor: not-allowed;
+
+        /* here we use the above --gap variable.
+           * the --slide variable is set in the
+           * keyframes below.
+           */
+        transform: translateX(calc((100% + var(--gap, 0.5rem)) * calc(var(--slide, 1) - 1)));
+        animation: dot 1s steps(1, end) forwards;
+        /* shhh... here is the magic */
+        animation-timeline: slide;
+      }
+
+      a {
+        text-indent: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        background-color: $_color-grey;
+        width: 10px;
+        height: 10px;
+      }
+    }
   }
+}
 
+/* timeline animation */
+@scroll-timeline slide {
+  source: selector(#slide);
+  orientation: inline;
+  time-range: 1s;
+}
 
-  /* timeline animation */
-  @scroll-timeline slide {
-    source: selector(#slide);
-    orientation: inline;
-    time-range: 1s;
+@keyframes dot {
+  0% {
+    --slide: 1;
   }
-
-  @keyframes dot {
-    0%    { --slide: 1; }
-    12.5% { --slide: 2; }
-    37.5% { --slide: 3; }
-    62.5% { --slide: 4; }
-    87.5%, 100% { --slide: 5; }
+  12.5% {
+    --slide: 2;
   }
-
+  37.5% {
+    --slide: 3;
+  }
+  62.5% {
+    --slide: 4;
+  }
+  87.5%,
+  100% {
+    --slide: 5;
+  }
+}

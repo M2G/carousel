@@ -48,6 +48,10 @@
 // ==========================================================================
 @import './page/dossier';
 
+body {
+  overflow: hidden;
+}
+
 .icon {
   display: inline-block;
 
