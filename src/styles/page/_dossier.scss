@@ -1,13 +1,19 @@
 // see: https://stackoverflow.com/questions/55590992/border-bottom-for-anchor-tag-on-click-css
 // see: https://css-tricks.com/css-only-carousel
 
+$dossier_height: 1400px;
+$dossier_padding: 20px;
+
 html {
+  height: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: 4rem;
 }
 
-$dossier_height: 1400px;
-$dossier_padding: 20px;
+body {
+  overflow: hidden;
+  min-height: 100%;
+}
 
 * {
   box-sizing: border-box;
