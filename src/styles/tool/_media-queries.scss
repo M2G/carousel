@@ -9,6 +9,9 @@ $_breakpoints: $_layout-breakpoints !default;
 
 // Check if values are valid and can be used on media queries.
 @function bp-key($value) {
+
+  @warn 'Warning : "#{$value}""';
+
   @if map-has-key($_breakpoints, $value) {
     @return map-get($_breakpoints, $value);
   }

@@ -1,7 +1,7 @@
 // see: https://stackoverflow.com/questions/55590992/border-bottom-for-anchor-tag-on-click-css
 // see: https://css-tricks.com/css-only-carousel
 
-$dossier_height: 1400px;
+$dossier_height: 100vh;
 $dossier_padding: 20px;
 
 html {
@@ -34,7 +34,7 @@ body {
     @include bp(large) {
       min-height: $dossier_height;
     }
-    @include bp_height(0px, $dossier_height + $_component_height_header) {
+    @include bp_height(0px, $dossier_height) {
       @include bp(0px, small) {
         //min-height: calc(100vh - 115px);
       }
@@ -330,7 +330,7 @@ body {
 }
 
 .c-dossier__intro {
-  @include bp_height(0px, $dossier_height + $_component_height_header) {
+  @include bp_height(0px, $dossier_height) {
     @include bp(0px, small) {
       // max-height: calc(100vh - 115px);
     }
@@ -384,7 +384,7 @@ body {
   $tablet_carousel_max_height: $dossier_padding + $_component_height_header;
   $mobile_carousel_max_height: 115px;
 
-  @include bp_height(0px, $dossier_height + $_component_height_header) {
+  @include bp_height(0px, $dossier_height) {
     @include bp(0px, small) {
       //  max-height: calc(100vh - #{$mobile_carousel_max_height});
     }
@@ -541,7 +541,7 @@ body {
       $table_carousel_body_max_height: $carousel_body_max_height + $_component_height_header;
       $mobile_carousel_body_max_height: ($carousel_body_max_height + 115px) - $dossier_padding;
 
-      @include bp_height(0px, $dossier_height + $_component_height_header) {
+      @include bp_height(0px, $dossier_height) {
         @include bp(0px, small) {
           // max-height: calc(100vh - #{$mobile_carousel_body_max_height});
         }
@@ -560,6 +560,13 @@ body {
   }
 }
 
+/* timeline animation */
+@scroll-timeline slide {
+  source: selector(#slide);
+  orientation: inline;
+  time-range: 1s;
+}
+
 .c-dossier__carousel {
   display: flex;
   flex-direction: column;
@@ -575,7 +582,7 @@ body {
     counter-reset: item;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    height: 100%;
+    height: calc(100vh - 120px);
   }
 
   &__item {
@@ -643,12 +650,6 @@ body {
   }
 }
 
-/* timeline animation */
-@scroll-timeline slide {
-  source: selector(#slide);
-  orientation: inline;
-  time-range: 1s;
-}
 
 @keyframes dot {
   0% {
