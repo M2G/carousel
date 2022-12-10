@@ -18,7 +18,7 @@ body {
 * {
   box-sizing: border-box;
   scrollbar-color: transparent transparent; /* thumb and track color */
-  scrollbar-width: 0px;
+  scrollbar-width: 0;
 }
 
 *::-webkit-scrollbar {
@@ -543,15 +543,15 @@ body {
 
       @include bp_height(0px, $dossier_height) {
         @include bp(0px, small) {
-          // max-height: calc(100vh - #{$mobile_carousel_body_max_height});
+          max-height: calc(100vh - #{$mobile_carousel_body_max_height});
         }
 
-        // max-height: calc(100vh - #{$table_carousel_body_max_height});
+        max-height: calc(100vh - #{$table_carousel_body_max_height});
       }
 
       overflow-y: auto;
 
-      // max-height: calc(#{$dossier_height} - #{$carousel_body_max_height});
+      max-height: calc(#{$dossier_height} - #{$carousel_body_max_height});
 
       img {
         width: 100%;
