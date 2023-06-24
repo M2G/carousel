@@ -19,16 +19,20 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/all",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    'plugin:perfectionist/recommended-natural'
   ],
   parserOptions: {
     project: path.resolve(__dirname, './tsconfig.json'),
     tsconfigRootDir: __dirname,
-    ecmaVersion: 2020,
+    ecmaVersion: 'latest',
     sourceType: 'module',
-    extraFileExtensions: [".scss"]
+    extraFileExtensions: ['.scss'],
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  plugins: ["@typescript-eslint", "jest", "prettier", "import"],
+  plugins: ["@typescript-eslint", "prettier", "import", "unused-imports"],
   rules: {
     "no-return-assign": 0,
     "no-restricted-syntax": 0,
