@@ -1,10 +1,7 @@
-import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 import { defineConfig } from 'vite';
-import svgr from 'vite-plugin-svgr';
 
 export default defineConfig(() => ({
-  plugins: [react(), svgr()],
   resolve: {
     alias: {
       assets: path.resolve(__dirname, './src/assets/'),
@@ -22,15 +19,6 @@ export default defineConfig(() => ({
       store: path.resolve(__dirname, './src/store/'),
       index: path.resolve(__dirname, './src/index/'),
       api: path.resolve(__dirname, './src/api/'),
-    },
-    css: {
-      modules: {
-        localsConvention: 'camelCaseOnly',
-      },
-    },
-    esbuild: {
-      jsxFactory: 'React.createElement',
-      jsxFragment: 'React.Fragment',
     },
   },
 }));
