@@ -63,8 +63,6 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepare": "husky install",
-    "generate:gql": "graphql-codegen",
-    "generate:gql:watch": "graphql-codegen --watch",
     "stylint": "npx stylelint \"**/*.scss\"",
     "lint:css": "stylelint '**/*.{scss,ts,tsx}'",
     "lint:css:fix": "stylelint --fix '**/*.scss'",
