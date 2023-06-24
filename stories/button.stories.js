@@ -1,30 +1,50 @@
-import global from 'global';
-import { action } from '@storybook/addon-actions';
-import { useEffect } from '@storybook/client-api';
+import { createButton } from './Button';
 
-const { document } = global;
-
+// More on how to set up stories at: https://storybook.js.org/docs/html/writing-stories/introduction
 export default {
-  title: 'Demo',
+  title: 'Example/Button',
+  tags: ['autodocs'],
+  render: ({ label, ...args }) => {
+    // You can either use a function to create DOM elements or use a plain html string!
+    // return `<div>${label}</div>`;
+    return createButton({ label, ...args });
+  },
+  argTypes: {
+    backgroundColor: { control: 'color' },
+    label: { control: 'text' },
+    onClick: { action: 'onClick' },
+    primary: { control: 'boolean' },
+    size: {
+      control: { type: 'select' },
+      options: ['small', 'medium', 'large'],
+    },
+  },
 };
 
-export const Heading = () => '<h1>Hello World</h1>';
-export const Headings = () =>
-  '<h1>Hello World</h1><h2>Hello World</h2><h3>Hello World</h3><h4>Hello World</h4>';
-
-export const Button = () => {
-  const btn = document.createElement('button');
-  btn.innerHTML = 'Hello Button';
-  btn.addEventListener('click', action('Click'));
-  return btn;
+// More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args
+export const Primary = {
+  args: {
+    primary: true,
+    label: 'Button',
+  },
 };
 
-export const Effect = () => {
-  useEffect(() => {
-    document.getElementById('button').style.backgroundColor = 'yellow';
-  });
-
-  return '<button id="button">I should be yellow</button>';
+export const Secondary = {
+  args: {
+    label: 'Button',
+  },
 };
 
-export const Script = () => '<div>JS alert</div><script>alert("hello")</script>';
+export const Large = {
+  args: {
+    size: 'large',
+    label: 'Button',
+  },
+};
+
+export const Small = {
+  args: {
+    size: 'small',
+    label: 'Button',
+  },
+};

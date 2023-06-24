@@ -1,24 +1,40 @@
-import global from 'global';
-
 import './page.css';
 import { createHeader } from './Header';
 
-const { document } = global;
-
-export interface PageProps {
-  user?: {};
-  onLogin: () => void;
-  onLogout: () => void;
-  onCreateAccount: () => void;
-}
-
-export const createPage = ({ user, onLogout, onLogin, onCreateAccount }: PageProps) => {
+export const createPage = () => {
   const article = document.createElement('article');
+  let user = null;
+  let header = null;
 
-  const header = createHeader({ onLogin, onLogout, onCreateAccount, user });
+  const rerenderHeader = () => {
+    const wrapper = document.getElementsByTagName('article')[0];
+    wrapper.replaceChild(createHeaderElement(), wrapper.firstChild);
+  };
+
+  const onLogin = () => {
+    user = { name: 'Jane Doe' };
+    rerenderHeader();
+  };
+
+  const onLogout = () => {
+    user = null;
+    rerenderHeader();
+  };
+
+  const onCreateAccount = () => {
+    user = { name: 'Jane Doe' };
+    rerenderHeader();
+  };
+
+  const createHeaderElement = () => {
+    return createHeader({ onLogin, onLogout, onCreateAccount, user });
+  };
+
+  header = createHeaderElement();
   article.appendChild(header);
+
   const section = `
-  <section>
+  <section class="storybook-page">
     <h2>Pages in Storybook</h2>
     <p>
       We recommend building UIs with a

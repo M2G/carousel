@@ -1,22 +1,11 @@
-import global from 'global';
-
 import './header.css';
 import { createButton } from './Button';
 
-const { document } = global;
-
-export interface HeaderProps {
-  user?: {};
-  onLogin: () => void;
-  onLogout: () => void;
-  onCreateAccount: () => void;
-}
-
-export const createHeader = ({ user, onLogout, onLogin, onCreateAccount }: HeaderProps) => {
+export const createHeader = ({ user, onLogout, onLogin, onCreateAccount }) => {
   const header = document.createElement('header');
 
   const wrapper = document.createElement('div');
-  wrapper.className = 'wrapper';
+  wrapper.className = 'storybook-header';
 
   const logo = `<div>
     <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -37,6 +26,8 @@ export const createHeader = ({ user, onLogout, onLogin, onCreateAccount }: Heade
 
   const account = document.createElement('div');
   if (user) {
+    const welcomeMessage = `<span class="welcome">Welcome, <b>${user.name}</b>!</span>`;
+    account.innerHTML = welcomeMessage;
     account.appendChild(createButton({ size: 'small', label: 'Log out', onClick: onLogout }));
   } else {
     account.appendChild(createButton({ size: 'small', label: 'Log in', onClick: onLogin }));

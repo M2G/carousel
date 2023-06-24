@@ -1,14 +1,14 @@
-import { addParameters } from '@storybook/html';
-
-addParameters({
-  a11y: {
-    config: {},
-    options: {
-      checks: { 'color-contrast': { options: { noScroll: true } } },
-      restoreScroll: true,
+/** @type { import('@storybook/html').Preview } */
+const preview = {
+  parameters: {
+    actions: { argTypesRegex: "^on[A-Z].*" },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
     },
   },
-  docs: {
-    iframeHeight: '200px',
-  },
-});
+};
+
+export default preview;
