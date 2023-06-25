@@ -567,8 +567,24 @@ body {
 }
 
 @supports (animation-timeline: works) {
-  .warning {
-    display: none;
+
+  @keyframes dot {
+    0% {
+      --slide: 1;
+    }
+    12.5% {
+      --slide: 2;
+    }
+    37.5% {
+      --slide: 3;
+    }
+    62.5% {
+      --slide: 4;
+    }
+    87.5%,
+    100% {
+      --slide: 5;
+    }
   }
 
   /* timeline animation */
@@ -576,6 +592,10 @@ body {
     source: selector(#slide);
     orientation: inline;
     time-range: 1s;
+  }
+
+  .warning {
+    display: none;
   }
 
   .c-dossier__carousel {
@@ -658,25 +678,6 @@ body {
           height: 10px;
         }
       }
-    }
-  }
-
-  @keyframes dot {
-    0% {
-      --slide: 1;
-    }
-    12.5% {
-      --slide: 2;
-    }
-    37.5% {
-      --slide: 3;
-    }
-    62.5% {
-      --slide: 4;
-    }
-    87.5%,
-    100% {
-      --slide: 5;
     }
   }
 }
