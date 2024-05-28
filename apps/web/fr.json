@@ -1,0 +1,85 @@
+{
+  "translation": {
+    "noData": "Aucune donnée",
+    "alert": {
+      "warning": "Attention, vous êtes sur le point d'effectuer une action irréversible"
+    },
+    "field": {
+      "createdAt": "Créé à",
+      "email": "Email",
+      "firstName": "Prénom",
+      "lastName": "Nom de famille",
+      "oldPassword": "Ancien Mot de passe",
+      "password": "Mot de passe",
+      "updateAt": "Mise à jour à"
+    },
+    "fieldError": {
+      "emailRequired": "Email requis",
+      "passwordRequired": "Mot de passe requis",
+      "newPasswordRequired": "Nouveau mot de passe requis",
+      "verifyPasswordRequired": "Vérifier le mot de passe requis",
+      "confirmPasswordRequired": "Confirmer le mot de passe requis",
+      "oldPasswordRequired": "Ancien mot de passe requis",
+      "emailInvalid": "Email invalide",
+      "passwordLength": "Le mot de passe doit comporter au moins 6 caractères",
+      "passwordMatch": "Les mots de passe ne correspondent pas"
+    },
+    "form": {
+      "createAccount": "Créer un compte",
+      "forgotPassword": "Mot de passe oublié",
+      "pleaseAuthenticate": "Veuillez vous authentifier",
+      "resetPassword": "Réinitialiser le mot de passe",
+      "toContinue": "Continuer",
+      "userProfile": "Profil de l'utilisateur",
+      "save": "Sauvegarder",
+      "signup": "Signup",
+      "haveAnAccount": "Vous avez un compte ?",
+      "signin": "Signin",
+      "home": "Home",
+      "submit": "Soumettre",
+      "profile": "Profile",
+      "wantToSeeYour": "Voulez-vous voir votre ?"
+    },
+    "resetPassword" : {
+      "passwordResetConfirmation" : "Votre mot de passe a été réinitialisé avec succès",
+      "passwordResetError" : "Une erreur s'est produite lors de la réinitialisation de votre mot de passe"
+    },
+    "forgotPassword": {
+      "forgotPasswordConfirmation": "votre demande a été traitée avec succès",
+      "forgotPasswordError": "Une erreur s'est produite lors de votre demande"
+    },
+    "changePassword": {
+      "changePasswordConfirmation": "Votre mot de passe a été mise à jours avec succès",
+      "changePasswordError": "Une erreur s'est produite lors de votre demande"
+    },
+
+
+
+    "errorsSignin": {
+      "WRONG_COMBINATION": "Combinaison email/mot de passe incorrecte",
+      "USER_NOT_FOUND": "Utilisateur non trouvé"
+    },
+    "errorsRegister": {
+      "DUPLICATE_ERROR": "Email déjà existant"
+    },
+    "errorsResetPassword": {
+      "RESET_PASSWORD_ERROR": "Erreur lors de la réinitialisation du mot de passe"
+    },
+    "errorsChangePassword": {
+      "CHANGE_PASSWORD_MATCH_ERROR": "Les mots de passe ne correspondent pas"
+    },
+
+
+
+    "successChangePassword": {
+      "CHANGE_PASSWORD": "Mot de passe mis à jour avec succès"
+    },
+
+    "navbar": {
+      "concerts": "Concerts",
+      "home": "Accueil",
+      "profil": "Profil",
+      "users": "Utilisateurs"
+    }
+  }
+}

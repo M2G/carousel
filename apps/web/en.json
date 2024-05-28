@@ -1,0 +1,87 @@
+{
+  "translation": {
+    "noData": "No data",
+    "alert": {
+      "warning": "Warning, you are about to perform an irreversible action"
+    },
+    "field": {
+      "createdAt": "Created at",
+      "email": "Email",
+      "firstName": "First name",
+      "password": "Password",
+      "lastName": "Last name",
+      "updateAt": "Update at",
+      "oldPassword": "Old password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "verifyPassword": "Verify password"
+    },
+    "fieldError": {
+      "emailRequired": "Email is required",
+      "passwordRequired": "Password is required",
+      "newPasswordRequired": "New password is required",
+      "verifyPasswordRequired": "Verify password is required",
+      "confirmPasswordRequired": "Confirm password is required",
+      "oldPasswordRequired": "Old password is required",
+      "emailInvalid": "Email is invalid",
+      "passwordLength": "Password must be at least 6 characters",
+      "passwordMatch": "Passwords does not match"
+    },
+    "form": {
+      "createAccount": "Create account",
+      "forgotPassword": "Forgot password",
+      "pleaseAuthenticate": "Please authenticate",
+      "changePassword": "Change Password",
+      "resetPassword": "Reset password",
+      "toContinue": "to continue",
+      "userProfile": "User Profile",
+      "save": "Save",
+      "signup": "Signup",
+      "haveAnAccount": "Have an account ?",
+      "signin": "Signin",
+      "home": "Home",
+      "submit": "Submit",
+      "profile": "Profile",
+      "wantToSeeYour": "Want to see your ?"
+    },
+    "resetPassword": {
+      "passwordResetConfirmation": "Your password has been reset successfully",
+      "passwordResetError": "An error occured while resetting your password"
+    },
+    "forgotPassword": {
+      "forgotPasswordConfirmation": "Your request has been processed successfully",
+      "forgotPasswordError": "An error has occurred during your request"
+    },
+    "changePassword": {
+      "changePasswordConfirmation": "Your password has been updated successfully",
+      "changePasswordError": "An error has occurred during your request"
+    },
+
+
+    "errorsSignin": {
+      "USER_NOT_FOUND": "User not found",
+      "WRONG_COMBINATION": "Wrong username and password combination."
+    },
+    "errorsRegister": {
+      "DUPLICATE_ERROR": "Email already exists"
+    },
+    "errorsResetPassword": {
+      "RESET_PASSWORD_ERROR": "An error occurred while resetting your password"
+    },
+    "errorsChangePassword": {
+      "CHANGE_PASSWORD_MATCH_ERROR": "Passwords does not match"
+    },
+
+
+    "successChangePassword": {
+      "CHANGE_PASSWORD": "Your password has been changed successfully"
+    },
+
+    "navbar": {
+      "concerts": "Concerts",
+      "home": "Home",
+      "profil": "Profil",
+      "users": "Users"
+    }
+  }
+}

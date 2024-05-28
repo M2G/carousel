@@ -566,7 +566,7 @@ body {
   }
 }
 
-@supports (animation-timeline: works) {
+// @supports (animation-timeline: works) {
 
   @keyframes dot {
     0% {
@@ -680,4 +680,4 @@ body {
       }
     }
   }
-}
+//}
