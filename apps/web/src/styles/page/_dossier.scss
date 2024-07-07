@@ -348,7 +348,9 @@ body {
   width: 100%;
   padding: 10px;
 
-  transition: opacity 300ms ease, transform 300ms ease;
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
   transform: translateY(0);
   text-align: justify;
 
@@ -397,7 +399,9 @@ body {
   // max-height: calc(#{$dossier_height} - #{$dossier_padding});
   max-height: 100vh;
 
-  transition: opacity 300ms ease 300ms, transform 300ms ease 300ms;
+  transition:
+    opacity 300ms ease 300ms,
+    transform 300ms ease 300ms;
   transform: scale(100%);
 
   &.is-hidden {
@@ -538,8 +542,10 @@ body {
     }
 
     &__body {
-      $table_carousel_body_max_height: $carousel_body_max_height + $_component_height_header;
-      $mobile_carousel_body_max_height: ($carousel_body_max_height + 115px) - $dossier_padding;
+      $table_carousel_body_max_height: $carousel_body_max_height +
+        $_component_height_header;
+      $mobile_carousel_body_max_height: ($carousel_body_max_height + 115px) -
+        $dossier_padding;
 
       @include bp_height(0px, $dossier_height) {
         @include bp(0px, small) {
@@ -560,124 +566,221 @@ body {
   }
 }
 
-@supports (not (animation-timeline: works)) {
-  .warning {
-    display: block;
+// @supports (animation-timeline: works) {
+
+@property --hue {
+  syntax: '<angle>';
+  initial-value: 0turn;
+  inherits: false;
+}
+
+/* will animate the angle prop 1 full turn */
+@keyframes hue-cycle {
+  to {
+    --hue: 1turn;
   }
 }
 
-// @supports (animation-timeline: works) {
+:root {
+  --hue: 275;
 
-  @keyframes dot {
-    0% {
-      --slide: 1;
-    }
-    12.5% {
-      --slide: 2;
-    }
-    37.5% {
-      --slide: 3;
-    }
-    62.5% {
-      --slide: 4;
-    }
-    87.5%,
-    100% {
-      --slide: 5;
-    }
+  --surface-2: $_color_brand;
+}
+
+#section-1 {
+  view-timeline: --section-1 x;
+}
+#section-2 {
+  view-timeline: --section-2 x;
+}
+#section-3 {
+  view-timeline: --section-3 x;
+}
+#section-4 {
+  view-timeline: --section-4 x;
+}
+#section-5 {
+  view-timeline: --section-5 x;
+}
+#section-6 {
+  view-timeline: --section-6 x;
+}
+#section-7 {
+  view-timeline: --section-7 x;
+}
+
+.c-dossier__carousel__nav__items > a {
+  @supports (animation-timeline: scroll()) {
+    animation: dot-selected linear both;
   }
 
-  /* timeline animation */
-  @scroll-timeline slide {
-    source: selector(#slide);
-    orientation: inline;
-    time-range: 1s;
+  /* power the scale animation by observing a relevant view timeline */
+  &:nth-child(1) {
+    animation-timeline: --section-1;
   }
-
-  .warning {
-    display: none;
+  &:nth-child(2) {
+    animation-timeline: --section-2;
   }
+  &:nth-child(3) {
+    animation-timeline: --section-3;
+  }
+  &:nth-child(4) {
+    animation-timeline: --section-4;
+  }
+  &:nth-child(5) {
+    animation-timeline: --section-5;
+  }
+  &:nth-child(6) {
+    animation-timeline: --section-6;
+  }
+  &:nth-child(7) {
+    animation-timeline: --section-7;
+  }
+}
 
-  .c-dossier__carousel {
+/* pagination dots effect */
+/* scaled out, until in view, then scale 1 */
+@keyframes dot-selected {
+  0%,
+  100% {
+    scale: 0.75;
+  }
+  50% {
+    scale: 1;
+    background-color: $_color_brand;
+  }
+}
+
+.c-dossier__carousel__nav__items > a {
+  background-color: $_color_brand;
+}
+
+.c-dossier__carousel__nav__item {
+  //position: fixed;
+  z-index: 1;
+  inset-inline: 0;
+  inset-block-end: var(--size-5);
+  //display: flex;
+  //place-content: center;
+  //gap: var(--size-3);
+  //padding: var(--size-3);
+
+  & > a {
+    display: inline-flex;
+    place-content: center;
+    inline-size: 2ch;
+    flex-shrink: 0;
+    aspect-ratio: var(--ratio-square);
+    border-radius: var(--radius-round);
+    overflow: hidden;
+    text-indent: 100vw;
+
+    &:is(:hover, :focus-visible) {
+      outline: 1px dashed var(--focus);
+      outline-offset: 2px;
+    }
+
+    &:visited {
+      background: inherit !important;
+    }
+  }
+}
+
+.c-dossier__carousel {
+  display: flex;
+  flex-direction: column;
+  // height: 100%;
+  height: 100vh;
+  position: relative;
+  perspective: 100px;
+
+  &__items {
     display: flex;
-    flex-direction: column;
-    // height: 100%;
-    height: 100vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    //counter-reset: item;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    height: calc(100vh - 120px);
+  }
+
+  &__item {
     position: relative;
-    perspective: 100px;
+    // flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+   // counter-increment: item;
+  }
+
+  &__nav {
+    &__button:target,
+    .c-dossier__carousel__nav__button:hover,
+    .c-dossier__carousel__nav__button:active,
+    .c-dossier__carousel__nav__button:focus {
+      border-bottom: 2px solid $_color_brand;
+      font-weight: bold;
+    }
 
     &__items {
-      display: flex;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      counter-reset: item;
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-      height: calc(100vh - 120px);
-    }
-
-    &__item {
       position: relative;
-      // flex: 0 0 100%;
-      width: 100%;
-      height: 100%;
-      counter-increment: item;
-    }
+      display: flex;
+      margin: 0 auto;
+      inline-size: max-content;
 
-    &__nav {
-      &__button:target,
-      .c-dossier__carousel__nav__button:hover,
-      .c-dossier__carousel__nav__button:active,
-      .c-dossier__carousel__nav__button:focus {
-        border-bottom: 2px solid $_color_brand;
-        font-weight: bold;
-      }
+      --gap: 0.8rem;
+      gap: var(--gap, 0.5rem);
 
-      &__items {
-        position: relative;
-        display: flex;
-        margin: 0 auto;
-        inline-size: max-content;
-
-        /* DRY: set here the gap between the dots,
-       * we will need it later to set the position
-       * of the nav::before pseudoelement
-       */
-        --gap: 0.8rem;
-        gap: var(--gap, 0.5rem);
-
-        &::before {
-          inline-size: 1rem;
-          aspect-ratio: 1;
-          background-color: $_color-brand;
-          width: 10px;
-          height: 10px;
-
-          content: '';
-          position: absolute;
-          z-index: 1;
-          display: block;
-          cursor: not-allowed;
-
-          /* here we use the above --gap variable.
-           * the --slide variable is set in the
-           * keyframes below.
-           */
-          transform: translateX(calc((100% + var(--gap, 0.5rem)) * calc(var(--slide, 1) - 1)));
-          animation: dot 1s steps(1, end) forwards;
-          /* shhh... here is the magic */
-          animation-timeline: slide;
-        }
-
-        a {
-          text-indent: 100%;
-          overflow: hidden;
-          white-space: nowrap;
-          background-color: $_color-grey;
-          width: 10px;
-          height: 10px;
-        }
+      a {
+        text-indent: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        background-color: $_color-grey;
+        width: 10px;
+        height: 10px;
       }
     }
   }
-//}
+}
+
+@keyframes toggle-control {
+  50% {
+    opacity: 0
+  }
+}
+
+.c-dossier__carousel__nav {
+  & > button {
+    /* if supported, enable the visibility toggling animation */
+    @supports (animation-timeline: scroll()) {
+      animation: toggle-control linear both;
+    }
+
+    /* fade out the previous button when section 1 is in view */
+    &.previous {
+      animation-timeline: --section-1;
+    }
+
+    /* fade out the next button when at the last section */
+    &.next {
+      animation-timeline: --section-5;
+    }
+  }
+}
+
+:root {
+  overflow-x: auto;
+  overscroll-behavior: contain;
+
+  /* be a snap scroller on x */
+  scroll-snap-type: x mandatory;
+
+  /* scroll snap sections */
+  & body > .c-dossier__carousel__items {
+    scroll-snap-align: start;
+  }
+}
+
+body {
+  timeline-scope: --section-1, --section-2, --section-3, --section-4,
+  --section-5;
+}

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import Component from './component';
 
 const visibleClass = 'is-hidden';
@@ -19,37 +18,12 @@ class Carousel extends Component {
     const introBtn = this.intro?.querySelector('.c-btn');
     const navIntro = this.elem?.querySelector('[data-dossier-navigation-intro]');
     const sommaryButton = this.elem?.querySelector('.c-dossier__navigation__item');
-    const items = this.carousel?.querySelector('.c-dossier__carousel__items').children;
-    const prevButton = this.carousel?.querySelector('[data-prev]');
-    const nextButton = this.carousel?.querySelector('[data-next]');
 
     sommaryButton?.addEventListener(
       CLICK,
       (): void => {
         this.hideCarousel();
         this.showIntro();
-      },
-      false
-    );
-
-    prevButton?.addEventListener(
-      CLICK,
-      (e): void => {
-        let n = e.target.href.slice(-1) * 1 - 1;
-        if (n === 0) return;
-        nextButton.href = e.target.href.slice(0, -1) + n;
-        e.target.href = e.target.href.slice(0, -1) + n;
-      },
-      false
-    );
-
-    nextButton?.addEventListener(
-      CLICK,
-      (e): void => {
-        let n = e.target.href.slice(-1) * 1 + 1;
-        if (n > items.length) return;
-        prevButton.href = e.target.href.slice(0, -1) + n;
-        e.target.href = e.target.href.slice(0, -1) + n;
       },
       false
     );
